@@ -27,25 +27,24 @@ public class Clerigo : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
     void Update()
     {
-        
-
-        vida -= Time.deltaTime; //Reduz a vida ao longo do tempo.
-
-        if (vida <= 0)
+        if (!estaMorto) // Verifique se o Clérigo não está morto
         {
-            //Inicia a contagem regressiva oara destruição
-            tempoParaDestruir -= Time.deltaTime;
+            vida -= Time.deltaTime; // Reduz a vida ao longo do tempo.
 
-            if (tempoParaDestruir <= 0)
+            if (vida <= 0)
             {
-                //Destrua o GameObject após o tempo definido
-                Destroy(gameObject);
+                // Inicia a contagem regressiva para destruição
+                tempoParaDestruir -= Time.deltaTime;
+
+                if (tempoParaDestruir <= 0)
+                {
+                    // Destrua o GameObject após o tempo definido
+                    Morrer(); // Chame a função de morte em vez de Destroy(gameObject)
+                }
             }
         }
-
 
         cooldownTimer -= Time.deltaTime;
 
@@ -65,23 +64,8 @@ public class Clerigo : MonoBehaviour
             if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
             {
                 lancandoProjétil = false;
-
-            }
-
-            if (estaMorto)
-            {
-                cooldownMorteTimer -= Time.deltaTime;
-
-                if (cooldownMorteTimer <= 0)
-                {
-                    // Após o cooldown da animação de morte, destrua o objeto
-                    Destroy(gameObject);
-                }
-
-                return;  // Não faça mais nada se o Clérigo estiver morto
             }
         }
-
     }
 
 
