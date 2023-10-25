@@ -7,6 +7,7 @@ TagManager:
   - ground
   - Enemy
   - Aliado
+  - Ally
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: "decora\xE7\xE3o"
     uniqueID: 3207070841
+    locked: 0
+  - name: player
+    uniqueID: 3740075751
     locked: 0

@@ -66,6 +66,16 @@ public class move : MonoBehaviour
             animator.SetBool("taAndando", false);
         }
 
+
+        if (Input.GetAxis("Horizontal") = 0)
+        {
+            animator.SetBool("taParado", true);
+        }
+        else
+        {
+            animator.SetBool("taParado", false);
+        }
+
         if (IsGrounded())
         {
             animator.SetBool("taPulando", false);

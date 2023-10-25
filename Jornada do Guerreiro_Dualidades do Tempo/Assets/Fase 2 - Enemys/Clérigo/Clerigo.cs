@@ -5,12 +5,16 @@ public class Clerigo : MonoBehaviour
     public float vida = 22;
     public float cura = 10;
     public float dano = 1;
+    public Playerhealth playerHealth;
+    public float tempoParaDestruir = 3.0f;
     public float deteccaoDistancia = 15f;
     public float projétilVelocidade = 12f;
     public float cooldown = 1.5f;
     public GameObject projétilDeCuraPrefab;
 
     private Animator animator;
+
+
     private bool estaMorto = false;
     private bool lancandoProjétil = false;
     private float cooldownTimer = 1f;
@@ -21,11 +25,28 @@ public class Clerigo : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
     }
+
 
     void Update()
     {
+        
+
+        vida -= Time.deltaTime; //Reduz a vida ao longo do tempo.
+
+        if (vida <= 0)
+        {
+            //Inicia a contagem regressiva oara destruição
+            tempoParaDestruir -= Time.deltaTime;
+
+            if (tempoParaDestruir <= 0)
+            {
+                //Destrua o GameObject após o tempo definido
+                Destroy(gameObject);
+            }
+        }
+
+
         cooldownTimer -= Time.deltaTime;
 
         if (cooldownTimer <= 0f)
@@ -63,6 +84,18 @@ public class Clerigo : MonoBehaviour
 
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(1);
+        }
+
+
+    }
+
+
     // Método chamado quando a animação de lançamento do projétil termina
     public void TerminarLancamentoDeProjétil()
     {
@@ -70,6 +103,8 @@ public class Clerigo : MonoBehaviour
         // A lógica após a animação de lançamento do projétil
         // Por exemplo, criar o projétil aqui, se necessário
     }
+
+
 
     private Transform alvo;
 
@@ -93,6 +128,7 @@ public class Clerigo : MonoBehaviour
         }
     }
 
+
     void LancarProjétilDeCura()
     {
         Vector3 direcao = alvo.position - transform.position;
@@ -106,6 +142,8 @@ public class Clerigo : MonoBehaviour
 
         Invoke("TerminarCura", 2f);  // Termina o processo de cura após 2 segundos
     }
+
+
 
     void TerminarCura()
     {
@@ -125,12 +163,14 @@ public class Clerigo : MonoBehaviour
             }
         }
     }
+
+
     void Morrer()
     {
         if (!estaMorto)
         {
             // Ative a animação de morte no Animator
-            animator.SetTrigger("Morte");
+            animator.SetBool("Morte",true);
             estaMorto = true;
 
             // Inicie o cooldown para destruir o objeto após a animação
