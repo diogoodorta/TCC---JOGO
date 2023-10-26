@@ -4,21 +4,39 @@ using UnityEngine;
 
 public class Abelha : MonoBehaviour
 {
-    int side = 1;
+    public int side = 1;
     public GameObject player;
     public bool flip;
     public Transform bullet;
     public Transform pivot;
     private float timer;
-    // Start is called before the first frame update
+    private Rigidbody2D rb;
+    private bool IsFacingLeft;
+    public float agroRange; // Defina o valor correto
+    public Transform castPoint; // Defina o Transform correto
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        //faceAnimator = GetComponent<Animator>(); // Corrigi a referência a face
     }
 
-    // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        transform.right = Vector2.right * side;
+        float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distToPlayer < agroRange)
+        {
+            if (timer > 2)
+            {
+                timer = 0;
+                Instantiate(bullet, pivot.position, transform.rotation);
+            }
+            
+        }
+
         Vector3 scale = transform.localScale;
 
         if (player.transform.position.x > transform.position.x)
@@ -29,18 +47,45 @@ public class Abelha : MonoBehaviour
         {
             scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
         }
-
         transform.localScale = scale;
 
-        //atirar projeteis
-        timer += Time.deltaTime;
-        transform.right = Vector2.right * side;
-
-        if (timer > 2)
+        // Chame a função CanSeePlayer e use seu retorno
+        bool canSee = CanSeePlayer(10f); // Defina a distância correta
+        if (canSee)
         {
-            timer = 0;
-            Instantiate(bullet, pivot.position, transform.rotation);
-
+            // Faça algo se o jogador estiver visível
         }
+    }
+
+    bool CanSeePlayer(float distance)
+    {
+        bool val = false;
+        float castDist = distance;
+
+        if (IsFacingLeft)
+        {
+            castDist = -distance;
+        }
+        Vector2 endPos = castPoint.position + Vector3.right * castDist;
+        RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPos, 1 << LayerMask.NameToLayer("Action"));
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                val = true;
+            }
+            else
+            {
+                val = false;
+            }
+            Debug.DrawLine(castPoint.position, hit.point, Color.yellow); // Corrigi a cor do Debug.DrawLine
+        }
+        else
+        {
+            Debug.DrawLine(castPoint.position, endPos, Color.blue);
+        }
+
+        return val; // Retorne o valor
     }
 }
