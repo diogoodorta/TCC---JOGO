@@ -31,41 +31,46 @@ public class Clerigo : MonoBehaviour
     {
         if (!estaMorto) // Verifique se o Clérigo não está morto
         {
-            vida -= Time.deltaTime; // Reduz a vida ao longo do tempo.
+            cooldownTimer -= Time.deltaTime;
+
+            if (cooldownTimer <= 0f)
+            {
+                DetectarAliadosEmPerigo();
+
+                if (alvo != null)
+                {
+                    // Defina o gatilho da animação para "LancandoProjétil"
+                    animator.SetTrigger("LancandoProjétil");
+                    LancarProjétilDeCura();
+                    cooldownTimer = cooldown;
+                }
+
+                // Verifique se a animação de lançamento do projétil está em andamento
+                if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
+                {
+                    lancandoProjétil = false;
+                }
+            }
 
             if (vida <= 0)
             {
-                // Inicia a contagem regressiva para destruição
                 tempoParaDestruir -= Time.deltaTime;
 
                 if (tempoParaDestruir <= 0)
                 {
-                    // Destrua o GameObject após o tempo definido
-                    Morrer(); // Chame a função de morte em vez de Destroy(gameObject)
+                    Morrer(); // Inicie a animação de morte
+
+                    // Agora, vamos destruir o GameObject após 3 segundos
+                    Invoke("DestruirGameObject", 3.0f);
                 }
             }
         }
+    }
 
-        cooldownTimer -= Time.deltaTime;
-
-        if (cooldownTimer <= 0f)
-        {
-            DetectarAliadosEmPerigo();
-
-            if (alvo != null)
-            {
-                // Defina o gatilho da animação para "LancandoProjétil"
-                animator.SetTrigger("LancandoProjétil");
-                LancarProjétilDeCura();
-                cooldownTimer = cooldown;
-            }
-
-            // Verifique se a animação de lançamento do projétil está em andamento
-            if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
-            {
-                lancandoProjétil = false;
-            }
-        }
+    void DestruirGameObject()
+    {
+        // Destrua o GameObject
+        Destroy(gameObject);
     }
 
 
