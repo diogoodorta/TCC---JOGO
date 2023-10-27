@@ -376,8 +376,9 @@ GameObject:
   - component: {fileID: 343413387}
   - component: {fileID: 343413388}
   - component: {fileID: 343413389}
+  - component: {fileID: 343413390}
   m_Layer: 0
-  m_Name: "Proj\xE9til"
+  m_Name: ScaleAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,6 +527,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &343413390
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343413383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed8e49152b82d184bb4b539597ed3d16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &845397653
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,8 +690,8 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   tempoParaDestruir: 3
   deteccaoDistancia: 50
-  "proj\xE9tilVelocidade": 10
-  cooldown: 1.6
+  "proj\xE9tilVelocidade": 9
+  cooldown: 1.61
   "proj\xE9tilDeCuraPrefab": {fileID: 343413383}
 --- !u!50 &845397658
 Rigidbody2D:
@@ -881,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b0566110f2099438458639b93ac936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 5
+  vida: -4000
 --- !u!212 &2140689593
 SpriteRenderer:
   m_ObjectHideFlags: 0

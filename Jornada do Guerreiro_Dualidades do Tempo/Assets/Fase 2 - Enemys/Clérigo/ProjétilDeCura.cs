@@ -4,10 +4,14 @@ public class ProjétilDeCura : MonoBehaviour
 {
     public float quantidadeDeCura = 50;
     public float velocidade = 5f;
-    
 
     private Transform alvoDoProjétil;
+    private Animation scaleAnimation;
 
+    void Start()
+    {
+        
+    }
 
     void Update()
     {
@@ -15,12 +19,17 @@ public class ProjétilDeCura : MonoBehaviour
         {
             Vector3 direcao = (alvoDoProjétil.position - transform.position).normalized;
             transform.Translate(direcao * velocidade * Time.deltaTime);
+
+            if (!scaleAnimation.isPlaying)
+            {
+                scaleAnimation.Play();
+            }
         }
     }
 
     public void DefinirAlvo(Transform novoAlvo)
     {
-        alvoDoProjétil = novoAlvo;  
+        alvoDoProjétil = novoAlvo;
     }
 
     void OnTriggerEnter2D(Collider2D other)
