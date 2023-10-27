@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Dualidades</string>
+    <string name="Credito">Credito</string>
+    <string name="Fases">Fases</string>
+    <string name="Inimigos">Inimigos</string>
+    <string name="titulo">DUALIDADES DO DESTINO</string>
+    <string name="texttest">Ela era bruxa, ele era um lobo.Ambos prontos para amar.Ela tão
+        clara, ele tão escuro.Ambos em busca de se encontrar.Ele corria, e ela fugia.A noite ele
+        aparecia com seu uivo dolorido.E ela surgia a iluminar a noite com o luar.A bruxa era vida e
+        o Lobo o destino.</string>
+    <string name="INIMIGOS">INIMIGOS FASE 1</string>
+    <string name="INIMIGOS2">INIMIGOS FASE 2</string>
+    <string name="INIMIGOS3">INIMIGOS FASE 3</string>
+    <string name="INIMIGOS4">INIMIGOS FASE 4</string>
+    <string name="fase1">Fase 1</string>
+    <string name="fase2">Fase 2</string>
+    <string name="fase3">Fase 3</string>
+    <string name="fase4">Fase 4</string>
+    <string name="FASES">FASES</string>
+    <string name="Cenario">Cenario</string>
+    <string name="Boss">Chefão</string>
+    <string name="Perfil">Perfil</string>
+    <string name="Projeto">Projeto</string>
+    <string name="text_button"> </string>
+    <string name="dualidades_do_destino">Dualidades do destino</string>
+
+</resources>

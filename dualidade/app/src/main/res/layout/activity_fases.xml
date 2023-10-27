@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cena2"
+    tools:context=".fases">
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/fase1"
+        android:onClick="IrParaTelaFase1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354"
+        app:srcCompat="@drawable/fas1" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/fase2"
+        android:onClick="IrParaTelaFase2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485"
+        app:srcCompat="@drawable/fas2" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/fase3"
+        android:onClick="IrParaTelaFase3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.618"
+        app:srcCompat="@drawable/fas3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

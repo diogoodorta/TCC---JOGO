@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cenario3"
+    tools:context=".fase4">
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/Boss"
+        android:onClick="IrParaTelaChefoes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583"
+        app:srcCompat="@drawable/y" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/Cenario"
+        android:onClick="IrParaTelaCenario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449"
+        app:srcCompat="@drawable/x" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="145dp"
+        android:layout_height="57dp"
+        android:contentDescription="@string/Inimigos"
+        android:onClick="IrParaTelaInimigo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.321"
+        app:srcCompat="@drawable/z" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
