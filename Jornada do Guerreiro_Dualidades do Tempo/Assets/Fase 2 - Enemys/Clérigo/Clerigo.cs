@@ -144,10 +144,11 @@ public class Clerigo : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player player = other.GetComponent<Player>();
+            Playerhealth player = other.GetComponent<Playerhealth>();
             if (player != null)
             {
-                player.ReceberDano(dano);
+                int danoInt = Mathf.RoundToInt(dano); // Converte dano de float para int
+                player.ReceberDano(danoInt); // Passa o dano como int
                 Debug.Log("Clérigo causou dano ao jogador!");
             }
         }
