@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f850a40f83a203e4a8ddfb56d00774ed
+guid: 756211f4e23bcf24ba0f8bcfeec9f6f0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,118 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: verme.andando_0
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 88
-        width: 51
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae22f3744056064478e9a2b6ebc1f764
-      internalID: 1471397419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: verme.andando_1
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 88
-        width: 51
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bcefd962891d3d48b721e0a38d1a443
-      internalID: -1089962016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: verme.andando_2
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 88
-        width: 46
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9958ce277e4b9c4883fc02592c6935e
-      internalID: -1576960516
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: verme.andando_3
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 88
-        width: 48
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e31f920a88910b4aae1785aa1327a1c
-      internalID: 1165326024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: verme.andando_4
-      rect:
-        serializedVersion: 2
-        x: 263
-        y: 88
-        width: 45
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed76bbef31517ca4fa9f786cac21aad7
-      internalID: 1720703404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: verme.andando_5
+      name: abelha atacando_0
       rect:
         serializedVersion: 2
         x: 7
-        y: 24
-        width: 48
-        height: 18
+        y: 78
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +124,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16393ce5d4dd31e48bc3ba3c37165698
-      internalID: -2123260085
+      spriteID: ed10e0f04c0051746935f2c57a01dde8
+      internalID: -1768364229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: verme.andando_6
+      name: abelha atacando_1
       rect:
         serializedVersion: 2
-        x: 73
-        y: 24
+        x: 71
+        y: 79
+        width: 47
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6c1cc722193c642be3d3da50f1abe3
+      internalID: 1871688851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: abelha atacando_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 76
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6efe81fd165a6b4193055178af2d271
+      internalID: 1151223095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: abelha atacando_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 8
         width: 46
-        height: 16
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5becfa6a06af93d429f34540a65e8ad7
-      internalID: 485715369
+      spriteID: af97b7266616b9e499699a91228f2896
+      internalID: 639764251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: verme.andando_7
+      name: abelha atacando_4
       rect:
         serializedVersion: 2
-        x: 134
-        y: 24
-        width: 51
-        height: 13
+        x: 65
+        y: 6
+        width: 62
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c80f0b9377aa640aca5b9f0e434313
-      internalID: 884353165
+      spriteID: 4be62cc636c762a4ea9a2f44c64c27a3
+      internalID: 1965561565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: verme.andando_8
+      name: abelha atacando_5
       rect:
         serializedVersion: 2
-        x: 198
-        y: 24
-        width: 51
-        height: 8
+        x: 129
+        y: 13
+        width: 50
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3823e25f9f2e8974bb8be64abb33e861
-      internalID: 1988285666
+      spriteID: 19bdee78639a4154980aa3b774fda19e
+      internalID: -1443128855
       vertices: []
       indices: 
       edges: []
@@ -309,15 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      verme.andando_0: 1471397419
-      verme.andando_1: -1089962016
-      verme.andando_2: -1576960516
-      verme.andando_3: 1165326024
-      verme.andando_4: 1720703404
-      verme.andando_5: -2123260085
-      verme.andando_6: 485715369
-      verme.andando_7: 884353165
-      verme.andando_8: 1988285666
+      abelha atacando_0: -1768364229
+      abelha atacando_1: 1871688851
+      abelha atacando_2: 1151223095
+      abelha atacando_3: 639764251
+      abelha atacando_4: 1965561565
+      abelha atacando_5: -1443128855
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
