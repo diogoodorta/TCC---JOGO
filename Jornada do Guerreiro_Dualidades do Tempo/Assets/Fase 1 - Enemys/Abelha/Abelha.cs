@@ -15,10 +15,12 @@ public class Abelha : MonoBehaviour
     public float agroRange; // Defina o valor correto
     public Transform castPoint; // Defina o Transform correto
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //faceAnimator = GetComponent<Animator>(); // Corrigi a referência a face
+        animator = GetComponent<Animator>(); // Corrigi a referï¿½ncia a face
     }
 
     void Update()
@@ -29,12 +31,26 @@ public class Abelha : MonoBehaviour
 
         if (distToPlayer < agroRange)
         {
-            if (timer > 2)
+
+            if (timer < 1)  
             {
-                timer = 0;
-                Instantiate(bullet, pivot.position, transform.rotation);
+                animator.SetBool("beAtacando", false);
             }
+
+            if(timer > 2.8)
+            {
+                 animator.SetBool("beAtacando", true);
+            }
+
+            if (timer > 3)
+            {
+                Instantiate(bullet, pivot.position, transform.rotation);
+                timer = 0;
+            }
+
             
+            
+
         }
 
         Vector3 scale = transform.localScale;
@@ -49,11 +65,11 @@ public class Abelha : MonoBehaviour
         }
         transform.localScale = scale;
 
-        // Chame a função CanSeePlayer e use seu retorno
-        bool canSee = CanSeePlayer(10f); // Defina a distância correta
+        // Chame a funï¿½ï¿½o CanSeePlayer e use seu retorno
+        bool canSee = CanSeePlayer(10f); // Defina a distï¿½ncia correta
         if (canSee)
         {
-            // Faça algo se o jogador estiver visível
+            // Faï¿½a algo se o jogador estiver visï¿½vel
         }
     }
 
