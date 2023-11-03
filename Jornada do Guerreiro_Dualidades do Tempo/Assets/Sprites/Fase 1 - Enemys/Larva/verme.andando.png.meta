@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,10 +113,10 @@ TextureImporter:
       name: verme.andando_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 88
-        width: 51
-        height: 8
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae22f3744056064478e9a2b6ebc1f764
-      internalID: 1471397419
+      spriteID: 5402a850827de82498f0c4cfca686bdb
+      internalID: -1281574464
       vertices: []
       indices: 
       edges: []
@@ -134,10 +134,10 @@ TextureImporter:
       name: verme.andando_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 88
-        width: 51
-        height: 13
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bcefd962891d3d48b721e0a38d1a443
-      internalID: -1089962016
+      spriteID: f5ba95ea70aa6eb449378d23e0658b45
+      internalID: 1059418526
       vertices: []
       indices: 
       edges: []
@@ -155,10 +155,10 @@ TextureImporter:
       name: verme.andando_2
       rect:
         serializedVersion: 2
-        x: 137
-        y: 88
-        width: 46
-        height: 16
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9958ce277e4b9c4883fc02592c6935e
-      internalID: -1576960516
+      spriteID: 2093d98c748d1a44e89eaac1cd5dbac1
+      internalID: -2093406953
       vertices: []
       indices: 
       edges: []
@@ -176,10 +176,10 @@ TextureImporter:
       name: verme.andando_3
       rect:
         serializedVersion: 2
-        x: 199
-        y: 88
-        width: 48
-        height: 18
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e31f920a88910b4aae1785aa1327a1c
-      internalID: 1165326024
+      spriteID: e9891987e954d4e4f8ac9431946a06d9
+      internalID: 468474882
       vertices: []
       indices: 
       edges: []
@@ -197,10 +197,10 @@ TextureImporter:
       name: verme.andando_4
       rect:
         serializedVersion: 2
-        x: 263
-        y: 88
-        width: 45
-        height: 21
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed76bbef31517ca4fa9f786cac21aad7
-      internalID: 1720703404
+      spriteID: 2500826ad6026114296440b3adb7ee32
+      internalID: 1998935215
       vertices: []
       indices: 
       edges: []
@@ -218,10 +218,10 @@ TextureImporter:
       name: verme.andando_5
       rect:
         serializedVersion: 2
-        x: 7
-        y: 24
-        width: 48
-        height: 18
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16393ce5d4dd31e48bc3ba3c37165698
-      internalID: -2123260085
+      spriteID: 71df2e13f49e91f44b5d5bfab2461444
+      internalID: -192132981
       vertices: []
       indices: 
       edges: []
@@ -239,10 +239,10 @@ TextureImporter:
       name: verme.andando_6
       rect:
         serializedVersion: 2
-        x: 73
-        y: 24
-        width: 46
-        height: 16
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5becfa6a06af93d429f34540a65e8ad7
-      internalID: 485715369
+      spriteID: 8ee66f61882fc9a44b7bb9e0d1752d8d
+      internalID: -1073708935
       vertices: []
       indices: 
       edges: []
@@ -260,10 +260,10 @@ TextureImporter:
       name: verme.andando_7
       rect:
         serializedVersion: 2
-        x: 134
-        y: 24
-        width: 51
-        height: 13
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c80f0b9377aa640aca5b9f0e434313
-      internalID: 884353165
+      spriteID: 6f20e4c90ab86fc4b865ddd1332d1fcf
+      internalID: 8746458
       vertices: []
       indices: 
       edges: []
@@ -281,10 +281,10 @@ TextureImporter:
       name: verme.andando_8
       rect:
         serializedVersion: 2
-        x: 198
-        y: 24
-        width: 51
-        height: 8
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3823e25f9f2e8974bb8be64abb33e861
-      internalID: 1988285666
+      spriteID: df9078b46ff3b11418a0cd185a4a73fd
+      internalID: -326811169
       vertices: []
       indices: 
       edges: []
@@ -309,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      verme.andando_0: 1471397419
-      verme.andando_1: -1089962016
-      verme.andando_2: -1576960516
-      verme.andando_3: 1165326024
-      verme.andando_4: 1720703404
-      verme.andando_5: -2123260085
-      verme.andando_6: 485715369
-      verme.andando_7: 884353165
-      verme.andando_8: 1988285666
+      verme.andando_0: -1281574464
+      verme.andando_1: 1059418526
+      verme.andando_2: -2093406953
+      verme.andando_3: 468474882
+      verme.andando_4: 1998935215
+      verme.andando_5: -192132981
+      verme.andando_6: -1073708935
+      verme.andando_7: 8746458
+      verme.andando_8: -326811169
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
