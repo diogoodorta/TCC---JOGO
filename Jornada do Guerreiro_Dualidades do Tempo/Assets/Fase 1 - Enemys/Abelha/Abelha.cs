@@ -14,7 +14,7 @@ public class Abelha : MonoBehaviour
     private bool IsFacingLeft;
     public float agroRange; // Defina o valor correto
     public Transform castPoint; // Defina o Transform correto
-
+    public float speed;
     public Animator animator;
 
     void Start()
@@ -31,7 +31,7 @@ public class Abelha : MonoBehaviour
 
         if (distToPlayer < agroRange)
         {
-
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             if (timer < 1)  
             {
                 animator.SetBool("beAtacando", false);
