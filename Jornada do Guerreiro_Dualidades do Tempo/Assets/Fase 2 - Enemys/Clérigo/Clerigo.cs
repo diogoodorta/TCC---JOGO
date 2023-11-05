@@ -59,9 +59,6 @@ public class Clerigo : MonoBehaviour
                 if (tempoParaDestruir <= 0)
                 {
                     Morrer(); // Inicie a animação de morte
-
-                    // Agora, vamos destruir o GameObject após 3 segundos
-                    Invoke("DestruirGameObject", 3.0f);
                 }
             }
         }
