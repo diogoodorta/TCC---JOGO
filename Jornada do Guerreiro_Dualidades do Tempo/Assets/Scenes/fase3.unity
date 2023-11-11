@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 194873530}
   - component: {fileID: 194873529}
   - component: {fileID: 194873528}
+  - component: {fileID: 194873532}
   m_Layer: 0
   m_Name: Morte
   m_TagString: Untagged
@@ -401,6 +402,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194873532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194873527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f2f4e0c767a654da7f204ff633cafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 5
+  distance: 10
+  maxHealth: 100
+  damage: 0
+  healthBar: {fileID: 0}
+  bossAnimator: {fileID: 0}
+  victoryScreen: {fileID: 0}
+  boneWallCooldown: 120
+  durationOfBoneWallAnimation: 2
+  durationOfTemporalRipAnimation: 2
+  durationOfScytheDashAnimation: 2
+  durationOfMegaScytheAnimation: 2
+  durationOfDeathScythesAnimation: 2
+  temporalRipCooldown: 90
+  scytheDashCooldown: 60
+  megaScytheCooldown: 180
+  deathScythesCooldown: 15
+  deathScytheSpeed: 10
+  deathScytheDamage: 10
+  numberOfDeathScythes: 3
+  deathScythePrefab: {fileID: 0}
+  boneWallPrefab: {fileID: 0}
 --- !u!1 &1423013380
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class DeathScytheScript : MonoBehaviour
     public float durationOfMegaScytheAnimation = 2.0f; // Defina a duração da animação do Lançando Mega Foice.
     public float durationOfDeathScythesAnimation = 2.0f; // Defina a duração da animação das Foices da Morte.
 
-    public float temporalRipCooldown = 90.0f;
+    public float temporalRipCooldown = 90.0f; 
     public float scytheDashCooldown = 60.0f;
     public float megaScytheCooldown = 180.0f;
 
