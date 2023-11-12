@@ -53,3 +53,12 @@ TagManager:
   - name: "decora\xE7\xE3o"
     uniqueID: 3207070841
     locked: 0
+  - name: Back
+    uniqueID: 2623807133
+    locked: 0
+  - name: Character
+    uniqueID: 932088355
+    locked: 0
+  - name: Foreground
+    uniqueID: 2597669447
+    locked: 0
