@@ -5,20 +5,25 @@ using UnityEngine;
 public class Abelha : MonoBehaviour
 {
     public int side = 1;
-    public GameObject player;
     public bool flip;
+    public float agroRange; // Defina o valor correto
+    public float speed;
+    public Animator animator;
+    public Transform castPoint; // Defina o Transform correto
     public Transform bullet;
     public Transform pivot;
+    public GameObject player;
+    public int vidaMaxima = 100;
+
+    int vidaAtual;
+
     private float timer;
     private Rigidbody2D rb;
     private bool IsFacingLeft;
-    public float agroRange; // Defina o valor correto
-    public Transform castPoint; // Defina o Transform correto
-    public float speed;
-    public Animator animator;
 
     void Start()
     {
+        vidaAtual = vidaMaxima;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); // Corrigi a refer�ncia a face
     }
@@ -103,5 +108,22 @@ public class Abelha : MonoBehaviour
         }
 
         return val; // Retorne o valor
+    }
+    public void ReceberDano(int damage)
+    {
+
+        vidaAtual -= damage;
+
+        if (vidaAtual <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    void Die()
+    {
+        Debug.Log("o inimigo morreu!");
+        Destroy(this.gameObject);
     }
 }

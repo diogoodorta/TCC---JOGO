@@ -8,13 +8,10 @@ public class Larva : MonoBehaviour
     public float moveSpeed;
     public int patrolDestination;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
-        //currentPoint = pointB.transform;
-        //anim.SetBool("larva", true); 
+       
     }
 
     // Update is called once per frame
@@ -41,17 +38,4 @@ public class Larva : MonoBehaviour
         }
     }
 
-    //private void flip()
-    //{
-    //Vector3 localScale = transform,localScale;
-    //localScale.x += -1;
-    //transform.localScale = localScale;
-    //}
-
-    //private void OnDrawGizmos()
-    //{
-    //Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
-    //Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
-    //Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
-    //}
 }
