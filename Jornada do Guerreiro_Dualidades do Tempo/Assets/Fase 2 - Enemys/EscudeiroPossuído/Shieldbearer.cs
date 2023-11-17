@@ -21,6 +21,7 @@ public class Shieldbearer : MonoBehaviour
     private bool jogadorNaVisao = false;
     private bool derrotado = false;
     private bool indoParaPontoDeVolta = false; // Adicione esta linha para declarar a variável
+    private bool podeAndar = true; // Adicione esta linha para controlar se o inimigo pode andar
 
     private void Start()
     {
@@ -40,70 +41,19 @@ public class Shieldbearer : MonoBehaviour
             jogadorNaVisao = false;
         }
 
-        if (jogadorNaVisao)
+        if (podeAndar)
         {
-            // Perseguir o jogador
-            Vector3 direcao = (Player.position - transform.position).normalized;
-            transform.Translate(direcao * velocidadePerseguicao * Time.deltaTime);
-        }
-        else
-        {
-            // Movimento padrão
-            MovimentoPadraoShieldbearer();
-        }
-    }
-
-    private void MovimentoPadrao()
-    {
-        // Implemente o movimento padrão do Shieldbearer aqui
-        // Por exemplo, movimento de ida e volta entre dois pontos.
-    }
-
-    public void SofrerDano(bool nasCostas)
-    {
-        if (!derrotado)
-        {
-            if (nasCostas)
+            if (jogadorNaVisao)
             {
-                vida--;
-                if (vida <= 0)
-                {
-                    Derrotar();
-                }
+                // Perseguir o jogador
+                Vector3 direcao = (Player.position - transform.position).normalized;
+                transform.Translate(direcao * velocidadePerseguicao * Time.deltaTime);
             }
             else
             {
-                // Lógica de empurrão
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                Vector2 direcaoEmpurrao = -(jogador.position - transform.position).normalized;
-                rb.AddForce(direcaoEmpurrao * empurraoForca, ForceMode2D.Impulse);
+                // Movimento padrão
+                MovimentoPadraoShieldbearer();
             }
-        }
-    }
-
-    private void Derrotar()
-    {
-        if (!derrotado)
-        {
-            //Desative o Collider para que o inimigo não possa mais ser atingido.
-            Collider2D collider = GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                collider.enabled = false;
-            }
-
-            // Reproduza a animação de morte, se houver um Animator.
-            if (animador != null)
-            {
-                animador.SetTrigger("Morte");
-            }
-
-            
-
-            derrotado = true;
-
-            // Agende a destruição do objeto do inimigo após um atraso.
-            Invoke("DestruirInimigo", atrasoAntesDeDestruir);
         }
     }
 
@@ -136,13 +86,69 @@ public class Shieldbearer : MonoBehaviour
         }
     }
 
+    public void SofrerDano(bool nasCostas)
+    {
+        if (!derrotado)
+        {
+            if (nasCostas)
+            {
+                vida--;
+                if (vida <= 0)
+                {
+                    Derrotar();
+                }
+                else
+                {
+                    // Inicie a animação de dano
+                    animador.SetTrigger("Dano");
+                    // Impede o inimigo de andar temporariamente
+                    StartCoroutine(PararAndarTemporariamente());
+                }
+            }
+            else
+            {
+                // Lógica de empurrão
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                Vector2 direcaoEmpurrao = -(jogador.position - transform.position).normalized;
+                rb.AddForce(direcaoEmpurrao * empurraoForca, ForceMode2D.Impulse);
+            }
+        }
+    }
+
+    IEnumerator PararAndarTemporariamente()
+    {
+        podeAndar = false;
+        yield return new WaitForSeconds(0.5f); // Aguarde 0.5 segundos
+        podeAndar = true;
+    }
+
+    private void Derrotar()
+    {
+        if (!derrotado)
+        {
+            //Desative o Collider para que o inimigo não possa mais ser atingido.
+            Collider2D collider = GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+
+            // Reproduza a animação de morte, se houver um Animator.
+            if (animador != null)
+            {
+                animador.SetTrigger("Morte");
+            }
+
+            derrotado = true;
+
+            // Agende a destruição do objeto do inimigo após um atraso.
+            Invoke("DestruirInimigo", atrasoAntesDeDestruir);
+        }
+    }
+
     private void DestruirInimigo()
     {
         // Destrua o objeto do inimigo.
         Destroy(gameObject);
     }
 }
-
-   
-    
-

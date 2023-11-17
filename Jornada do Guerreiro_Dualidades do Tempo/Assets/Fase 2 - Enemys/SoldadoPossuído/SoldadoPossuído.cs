@@ -10,7 +10,6 @@ public class Inimigo : MonoBehaviour
     public float alcanceDeDetecção = 10.0f;
     public float alcanceDoAtaque = 1.5f;
     public float tempoEntreAtaques = 2.0f; // Tempo em segundos entre os ataques
-    public Playerhealth playerHealth;
     public LayerMask jogadorLayer; // Layer do jogador
     public Transform espadaTransform; // Transform da espada
 
@@ -20,6 +19,7 @@ public class Inimigo : MonoBehaviour
     private float cooldownMorteTimer = 0f;
     private Transform jogador;
     private Animator animator;
+    private bool podeMover = true; // Adicione esta linha para controlar se o inimigo pode se mover
 
     void Start()
     {
@@ -37,7 +37,7 @@ public class Inimigo : MonoBehaviour
 
     void Update()
     {
-        if (!estaMorto)
+        if (!estaMorto && podeMover)
         {
             float distanciaParaJogador = Vector2.Distance(transform.position, jogador.position);
 
@@ -91,6 +91,7 @@ public class Inimigo : MonoBehaviour
         if (vida <= 0)
         {
             estaMorto = true;
+            podeMover = false; // Impede o inimigo de se mover temporariamente
             animator.SetBool("Morto", true);
             cooldownMorteTimer = cooldownMorte;
         }

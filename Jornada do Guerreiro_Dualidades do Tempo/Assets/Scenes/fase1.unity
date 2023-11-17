@@ -1250,9 +1250,9 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 239964979}
   - {fileID: 1895209002}
-  moveSpeed: 3
+  moveSpeed: 4
   patrolDestination: 0
-  playerHealth: {fileID: 0}
+  vidaMaxima: 3
 --- !u!212 &215803917
 SpriteRenderer:
   m_ObjectHideFlags: 0

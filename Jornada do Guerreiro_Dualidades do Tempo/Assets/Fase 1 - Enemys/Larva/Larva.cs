@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Larva : MonoBehaviour
@@ -8,65 +7,82 @@ public class Larva : MonoBehaviour
     public float moveSpeed;
     public int patrolDestination;
 
-    public int vidaMaxima = 3; // Ajuste conforme necessário
+    public int vidaMaxima = 3;
     private int vidaAtual;
 
     private Animator animator;
-
+    private bool morrendo = false;
+    private float tempoParaDestruirInicial = 3f;
+    private float tempoParaDestruir; // Usaremos essa variável para controlar o tempo restante
 
     void Start()
     {
         vidaAtual = vidaMaxima;
-        vidaAtual -= playerHealth.health;
         animator = GetComponent<Animator>();
+        tempoParaDestruir = tempoParaDestruirInicial;
+
+        // Inicie o tempo de destruição quando o objeto é instanciado
+        StartCoroutine(DestruirAposTempo());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
+            // Obtenha a referência do script Playerhealth
             Playerhealth playerHealth = collision.gameObject.GetComponent<Playerhealth>();
 
             if (playerHealth != null)
             {
-                // Recebe dano do player
-                vidaAtual -= playerHealth.GetCurrentHealth();
+                playerHealth.TakeDamage(1);
 
-                // Verifica se a vida chegou a zero
+                // Reduza a vida da larva
+                vidaAtual--;
+
                 if (vidaAtual <= 0)
                 {
-                    Morrer(); // Inicie a animação de morte e destrua o GameObject
+                    // Se a vida da larva chegar a 0, inicie a animação de morte
+                    Morrer();
                 }
             }
         }
     }
 
-    // Função para a larva morrer
-    private void Morrer()
+    IEnumerator DestruirAposTempo()
     {
-        // Inicie a animação de morte ou qualquer lógica necessária
-        if (animator != null)
+        while (tempoParaDestruir > 0)
         {
-            animator.SetTrigger("Morrer"); // Assumindo que você tenha uma trigger "Morrer" na sua animação
+            // Aguarde um pequeno intervalo
+            yield return new WaitForSeconds(0.1f);
+
+            // Reduza o tempo de destruição
+            tempoParaDestruir -= 0.1f;
         }
 
-        // Aguarde um tempo antes de destruir o GameObject (opcional)
-        StartCoroutine(DestruirAposAnimacao());
+        // Inicie a animação de morte e destrua o GameObject
+        Morrer();
     }
 
-    IEnumerator DestruirAposAnimacao()
+    private void Morrer()
     {
-        // Aguarde o tempo da animação de morte
-        yield return new WaitForSeconds(2f); // Ajuste conforme necessário
-
-        // Destrua o GameObject
-        Destroy(gameObject);
+        if (!morrendo && animator != null)
+        {
+            morrendo = true; // Marque a larva como morrendo
+            animator.SetTrigger("Morrer"); // Assumindo que você tenha uma trigger "Morrer" na sua animação
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Coloque o restante do código aqui
+        if (!morrendo) // Verifique se a larva não está morrendo
+        {
+            // Coloque o restante do código aqui
+            if (vidaAtual <= 0)
+            {
+            }
+        }
+
         if (patrolDestination == 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);

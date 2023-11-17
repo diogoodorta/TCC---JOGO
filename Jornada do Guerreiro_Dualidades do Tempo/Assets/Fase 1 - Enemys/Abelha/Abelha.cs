@@ -9,13 +9,16 @@ public class Abelha : MonoBehaviour
     public bool flip;
     public Transform bullet;
     public Transform pivot;
-    private float timer;
-    private Rigidbody2D rb;
-    private bool IsFacingLeft;
     public float agroRange; // Defina o valor correto
     public Transform castPoint; // Defina o Transform correto
     public float speed;
     public Animator animator;
+
+    private bool morrendo = false; // Flag para controlar se a abelha está morrendo
+    private float timer;
+    private Rigidbody2D rb;
+    private bool IsFacingLeft;
+
 
     void Start()
     {
@@ -103,5 +106,27 @@ public class Abelha : MonoBehaviour
         }
 
         return val; // Retorne o valor
+    }
+
+    private void Morrer()
+    {
+        // Inicie a animação de morte ou qualquer lógica necessária
+        if (animator != null)
+        {
+            animator.SetTrigger("MorrerTrigger"); // Ativar o trigger de morte
+            morrendo = true; // Marcar a abelha como morrendo
+        }
+
+        // Aguarde um tempo antes de destruir o GameObject (opcional)
+        StartCoroutine(DestruirAposAnimacao());
+    }
+
+    IEnumerator DestruirAposAnimacao()
+    {
+        // Aguarde o tempo da animação de morte
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // Aguarde o término da animação
+
+        // Destrua o GameObject
+        Destroy(gameObject);
     }
 }
