@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Abelha : MonoBehaviour
@@ -14,16 +13,14 @@ public class Abelha : MonoBehaviour
     public float speed;
     public Animator animator;
 
-    private bool morrendo = false; // Flag para controlar se a abelha está morrendo
     private float timer;
     private Rigidbody2D rb;
     private bool IsFacingLeft;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Corrigi a refer�ncia a face
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -35,14 +32,14 @@ public class Abelha : MonoBehaviour
         if (distToPlayer < agroRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            if (timer < 1)  
+            if (timer < 1)
             {
                 animator.SetBool("beAtacando", false);
             }
 
-            if(timer > 2.8)
+            if (timer > 2.8)
             {
-                 animator.SetBool("beAtacando", true);
+                animator.SetBool("beAtacando", true);
             }
 
             if (timer > 3)
@@ -50,10 +47,6 @@ public class Abelha : MonoBehaviour
                 Instantiate(bullet, pivot.position, transform.rotation);
                 timer = 0;
             }
-
-            
-            
-
         }
 
         Vector3 scale = transform.localScale;
@@ -68,17 +61,16 @@ public class Abelha : MonoBehaviour
         }
         transform.localScale = scale;
 
-        // Chame a fun��o CanSeePlayer e use seu retorno
-        bool canSee = CanSeePlayer(10f); // Defina a dist�ncia correta
+        // Chame a função CanSeePlayer e use seu retorno
+        bool canSee = CanSeePlayer(10f); // Defina a distância correta
         if (canSee)
         {
-            // Fa�a algo se o jogador estiver vis�vel
+            // Faça algo se o jogador estiver visível
         }
     }
 
     bool CanSeePlayer(float distance)
     {
-        bool val = false;
         float castDist = distance;
 
         if (IsFacingLeft)
@@ -92,11 +84,7 @@ public class Abelha : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Player"))
             {
-                val = true;
-            }
-            else
-            {
-                val = false;
+                return true;
             }
             Debug.DrawLine(castPoint.position, hit.point, Color.yellow); // Corrigi a cor do Debug.DrawLine
         }
@@ -105,7 +93,7 @@ public class Abelha : MonoBehaviour
             Debug.DrawLine(castPoint.position, endPos, Color.blue);
         }
 
-        return val; // Retorne o valor
+        return false; // Retorne o valor
     }
 
     private void Morrer()
@@ -114,7 +102,6 @@ public class Abelha : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("MorrerTrigger"); // Ativar o trigger de morte
-            morrendo = true; // Marcar a abelha como morrendo
         }
 
         // Aguarde um tempo antes de destruir o GameObject (opcional)

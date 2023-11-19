@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playerhealth : MonoBehaviour
+public class Playerhealth : MonoBehaviour, IDamageable
 {
     public int health;
     public int maxHealth = 1;
