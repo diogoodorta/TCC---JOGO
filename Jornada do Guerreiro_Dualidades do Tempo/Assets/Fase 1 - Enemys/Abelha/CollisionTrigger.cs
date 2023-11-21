@@ -9,6 +9,7 @@ public class CollisionTrigger : MonoBehaviour
     public float projectileSpeed;
     public int playerHealth = 100;
     public float destroyDelay = 3f;
+    public Animator anim;
 
     void Start()
     {
@@ -20,7 +21,8 @@ public class CollisionTrigger : MonoBehaviour
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
 
-        // Destruir o objeto após um certo período de tempo
+        // Destruir o objeto apÃ³s um certo perÃ­odo de tempo
+        anim.SetTrigger("morte");
         Destroy(gameObject, destroyDelay);
     }
 
@@ -38,7 +40,7 @@ public class CollisionTrigger : MonoBehaviour
             if (playerHealth <= 0)
             {
                 Destroy(other.gameObject);
-                // Adicione aqui a lógica para lidar com o fim do jogo
+                // Adicione aqui a lÃ³gica para lidar com o fim do jogo
             }
         }
     }
