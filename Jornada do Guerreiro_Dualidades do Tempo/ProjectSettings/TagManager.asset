@@ -7,6 +7,7 @@ TagManager:
   - ground
   - Enemy
   - Aliado
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Enemy
   - Ally
   - Player
-  - 
-  - 
+  - Portal
+  - JogadorLayer
   - 
   - 
   - 
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2597669447
+    locked: 0
+  - name: Portal
+    uniqueID: 705070437
     locked: 0
