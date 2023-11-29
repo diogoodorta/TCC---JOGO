@@ -11,9 +11,10 @@ public class Larva : MonoBehaviour
     private int vidaAtual;
 
     private Animator animator;
+
     private bool morrendo = false;
     private float tempoParaDestruirInicial = 3f;
-    private float tempoParaDestruir; // Usaremos essa variável para controlar o tempo restante
+    private float tempoParaDestruir; // Usaremos essa variï¿½vel para controlar o tempo restante
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class Larva : MonoBehaviour
         animator = GetComponent<Animator>();
         tempoParaDestruir = tempoParaDestruirInicial;
 
-        // Inicie o tempo de destruição quando o objeto é instanciado
+        // Inicie o tempo de destruiï¿½ï¿½o quando o objeto ï¿½ instanciado
         StartCoroutine(DestruirAposTempo());
     }
 
@@ -29,7 +30,7 @@ public class Larva : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            // Obtenha a referência do script Playerhealth
+            // Obtenha a referï¿½ncia do script Playerhealth
             Playerhealth playerHealth = collision.gameObject.GetComponent<Playerhealth>();
 
             if (playerHealth != null)
@@ -41,8 +42,10 @@ public class Larva : MonoBehaviour
 
                 if (vidaAtual <= 0)
                 {
-                    // Se a vida da larva chegar a 0, inicie a animação de morte
+                    // Se a vida da larva chegar a 0, inicie a animaï¿½ï¿½o de morte
                     Morrer();
+                    animator.SetTrigger("morte");
+
                 }
             }
         }
@@ -55,11 +58,11 @@ public class Larva : MonoBehaviour
             // Aguarde um pequeno intervalo
             yield return new WaitForSeconds(0.1f);
 
-            // Reduza o tempo de destruição
+            // Reduza o tempo de destruiï¿½ï¿½o
             tempoParaDestruir -= 0.1f;
         }
 
-        // Inicie a animação de morte e destrua o GameObject
+        // Inicie a animaï¿½ï¿½o de morte e destrua o GameObject
         Morrer();
     }
 
@@ -68,16 +71,16 @@ public class Larva : MonoBehaviour
         if (!morrendo && animator != null)
         {
             morrendo = true; // Marque a larva como morrendo
-            animator.SetTrigger("Morrer"); // Assumindo que você tenha uma trigger "Morrer" na sua animação
+            animator.SetTrigger("Morrer"); // Assumindo que vocï¿½ tenha uma trigger "Morrer" na sua animaï¿½ï¿½o
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!morrendo) // Verifique se a larva não está morrendo
+        if (!morrendo) // Verifique se a larva nï¿½o estï¿½ morrendo
         {
-            // Coloque o restante do código aqui
+            // Coloque o restante do cï¿½digo aqui
             if (vidaAtual <= 0)
             {
             }

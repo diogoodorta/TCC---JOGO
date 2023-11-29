@@ -18,7 +18,9 @@ public class Inimigo : MonoBehaviour
     private float cooldownMorte = 2f;  // Cooldown para destruir o objeto após a animação de morte
     private float cooldownMorteTimer = 0f;
     private Transform jogador;
+
     private Animator animator;
+
     private bool podeMover = true; // Adicione esta linha para controlar se o inimigo pode se mover
 
     void Start()

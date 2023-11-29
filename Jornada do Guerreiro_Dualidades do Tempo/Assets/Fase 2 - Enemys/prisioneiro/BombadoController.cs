@@ -13,7 +13,7 @@ public class BombadoController : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     private bool canKick = true;
 
-    public Transform kickPoint;  // Posição do ponto de ataque (pé)
+    public Transform kickPoint;  // Posiï¿½ï¿½o do ponto de ataque (pï¿½)
 
     private void Start()
     {
@@ -49,11 +49,11 @@ public class BombadoController : MonoBehaviour, IDamageable
 
     private void Kick()
     {
-        // Ativa a animação de chutão
+        // Ativa a animaï¿½ï¿½o de chutï¿½o
         animator.SetTrigger("Kick");
     }
 
-    // Implementação do método da interface IDamageable
+    // Implementaï¿½ï¿½o do mï¿½todo da interface IDamageable
     public void TakeDamage(int damage)
     {
         if (!isDead)
@@ -69,13 +69,13 @@ public class BombadoController : MonoBehaviour, IDamageable
 
     private IEnumerator KickCooldown()
     {
-        // Define a variável de cooldown para false
+        // Define a variï¿½vel de cooldown para false
         canKick = false;
 
         // Aguarda o tempo de cooldown
         yield return new WaitForSeconds(kickCooldown);
 
-        // Reset a variável de cooldown para true
+        // Reset a variï¿½vel de cooldown para true
         canKick = true;
     }
 
@@ -85,7 +85,7 @@ public class BombadoController : MonoBehaviour, IDamageable
         animator.SetTrigger("Die");
 
 
-        // Desativa o GameObject após 5 segundos (ajuste conforme necessário)
+        // Desativa o GameObject apï¿½s 5 segundos (ajuste conforme necessï¿½rio)
         StartCoroutine(DestroyGameObjectAfterDelay());
     }
 
