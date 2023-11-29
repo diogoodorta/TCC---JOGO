@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public float vida = 20; // Defina o valor máximo de vida do inimigo
+    public float vida = 20;
     public int danoDaEspada = 1;
     public float velocidadeMovimento = 5.0f;
     public float alcanceDeDetecção = 10.0f;
     public float alcanceDoAtaque = 1.5f;
-    public float tempoEntreAtaques = 2.0f; // Tempo em segundos entre os ataques
-    public LayerMask jogadorLayer; // Layer do jogador
-    public Transform espadaTransform; // Transform da espada
+    public float tempoEntreAtaques = 2.0f;
+    public LayerMask jogadorLayer;
+    public Transform espadaTransform;
 
-    private float tempoUltimoAtaque = -10.0f; // Inicialize com um valor negativo para evitar um ataque imediato
+    private float tempoUltimoAtaque = -10.0f;
     private bool estaMorto = false;
-    private float cooldownMorte = 2f;  // Cooldown para destruir o objeto após a animação de morte
+    private float cooldownMorte = 2f;
     private float cooldownMorteTimer = 0f;
     private Transform jogador;
 
     private Animator animator;
-
-    private bool podeMover = true; // Adicione esta linha para controlar se o inimigo pode se mover
+    private bool podeMover = true;
 
     void Start()
     {
-        jogador = GameObject.FindGameObjectWithTag("Player").transform;
+        jogador = GameObject.FindWithTag("Player").transform;
         if (jogador != null)
         {
             animator = GetComponent<Animator>();
@@ -54,11 +53,14 @@ public class Inimigo : MonoBehaviour
                 }
             }
 
-            cooldownMorteTimer -= Time.deltaTime;
-
-            if (cooldownMorteTimer <= 0f)
+            if (estaMorto)
             {
-                Destroy(gameObject);
+                cooldownMorteTimer -= Time.deltaTime;
+
+                if (cooldownMorteTimer <= 0f)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -69,21 +71,29 @@ public class Inimigo : MonoBehaviour
         {
             animator.SetTrigger("Atacar");
 
+            Debug.Log("Ataque do inimigo iniciado");
+
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(espadaTransform.position, alcanceDoAtaque, jogadorLayer);
 
             foreach (Collider2D collider in hitColliders)
             {
                 if (collider.gameObject.layer == jogadorLayer)
                 {
+                    Debug.Log("Ataque acertou o jogador");
                     Playerhealth playerHealth = collider.GetComponent<Playerhealth>();
                     if (playerHealth != null)
                     {
                         playerHealth.TakeDamage(danoDaEspada);
+                        Debug.Log("Dano causado ao jogador");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("O componente Playerhealth não foi encontrado no jogador.");
                     }
                 }
             }
 
-            tempoUltimoAtaque = Time.time; // Registre o tempo do último ataque
+            tempoUltimoAtaque = Time.time;
         }
     }
 
@@ -93,7 +103,7 @@ public class Inimigo : MonoBehaviour
         if (vida <= 0)
         {
             estaMorto = true;
-            podeMover = false; // Impede o inimigo de se mover temporariamente
+            podeMover = false;
             animator.SetBool("Morto", true);
             cooldownMorteTimer = cooldownMorte;
         }
