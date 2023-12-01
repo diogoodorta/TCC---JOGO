@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 254121283}
   - component: {fileID: 254121285}
   - component: {fileID: 254121284}
+  - component: {fileID: 254121286}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -202,6 +203,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254121282}
   m_CullTransparentMesh: 1
+--- !u!114 &254121286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254121282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf09e8f99045f844bb29a3fc3738487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorImage: {fileID: 293860307}
+  actorName: {fileID: 612373709}
+  messageText: {fileID: 254278011}
+  backgroundBox: {fileID: 254121283}
 --- !u!1 &254278009
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 18.848999, y: -11}
+  m_AnchoredPosition: {x: 18.848999, y: 5}
   m_SizeDelta: {x: -279.0981, y: 48.6392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254278011
@@ -287,8 +304,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.3
-  m_fontSizeBase: 23.3
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -388,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.022027409, g: 0.72629666, b: 0.9339623, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -734,6 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056491735}
   - component: {fileID: 1056491734}
+  - component: {fileID: 1056491736}
   m_Layer: 0
   m_Name: "M\xC3\xA3e-1.png"
   m_TagString: Untagged
@@ -808,6 +826,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1056491736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056491733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27df6b2c3e3b4e243b07f72b6db8e20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - actorId: 0
+    message: "Filho, voc\xEA est\xE1 pronto para ir ver o mundo l\xE1 fora? "
+  - actorId: 1
+    message: " Voc\xEA parece um pouco nervoso, querido. Como est\xE1 se sentindo
+      de verdade?  "
+  - actorId: 0
+    message: "Voc\xEA sabe que pode compartilhar qualquer coisa comigo, n\xE3o \xE9?
+      Se h\xE1 algo mais profundo te preocupando, estou aqui para ajudar.  "
+  - actorId: 1
+    message: "Meu amor, estou t\xE3o orgulhosa de voc\xEA por ser t\xE3o corajoso.
+      Voc\xEA n\xE3o est\xE1 sozinho nisso, e sempre estaremos aqui para apoiar voc\xEA,
+      n\xE3o importa o que aconte\xE7a.  "
+  - actorId: 0
+    message: "Estarei ao seu lado, a cada passo seu meu filho. V\xE1 em frente, mas
+      lembre-se de que n\xE3o precisa enfrentar tudo sozinho. A vida \xE9 uma jornada,
+      e estarei aqui para ajudar a iluminar o seu caminho.  "
+  - actorId: 1
+    message: 'Sim, meu filho! '
+  actors:
+  - name: "M\xE3e"
+    sprite: {fileID: 21300000, guid: 8ceea276951308e43ab302585020bd28, type: 3}
+  - name: Filho
+    sprite: {fileID: 21300000, guid: b3cfeca299b1b014dbff52574384496c, type: 3}
 --- !u!1 &1153803027
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -892,7 +946,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1153803030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153803032}
+        m_TargetAssemblyTypeName: DialogTrigger, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1153803030
 MonoBehaviour:
   m_ObjectHideFlags: 0
