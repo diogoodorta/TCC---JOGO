@@ -38,6 +38,7 @@ public class DialogManager : MonoBehaviour
         actorImage.sprite = actorToDisplay.sprite;
 
         AnimateTextColor();
+
     }
 
     public void NextMessage()
@@ -57,8 +58,8 @@ public class DialogManager : MonoBehaviour
 
     void AnimateTextColor()
     {
-        LeanTween.textAlpha(messageText.rectTransform, 0, 0);
-        LeanTween.textAlpha(messageText.rectTransform, 1, 0.5f);
+        LeanTween.textAlpha(messageText.rectTransform, 1, 0);
+        LeanTween.textAlpha(messageText.rectTransform, 1, 1);
     }   
 
     // Start is called before the first frame update
