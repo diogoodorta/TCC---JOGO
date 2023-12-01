@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 23386918}
   - component: {fileID: 23386919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (12)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,9 +217,9 @@ GameObject:
   m_Component:
   - component: {fileID: 57152298}
   - component: {fileID: 57152299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (31)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,9 +301,9 @@ GameObject:
   m_Component:
   - component: {fileID: 78448842}
   - component: {fileID: 78448843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (26)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,9 +385,9 @@ GameObject:
   m_Component:
   - component: {fileID: 89758817}
   - component: {fileID: 89758818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (13)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -469,9 +469,9 @@ GameObject:
   m_Component:
   - component: {fileID: 121430204}
   - component: {fileID: 121430205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (20)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,9 +553,9 @@ GameObject:
   m_Component:
   - component: {fileID: 141917727}
   - component: {fileID: 141917728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (30)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,9 +637,9 @@ GameObject:
   m_Component:
   - component: {fileID: 169195900}
   - component: {fileID: 169195901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (32)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,9 +790,9 @@ GameObject:
   m_Component:
   - component: {fileID: 185921138}
   - component: {fileID: 185921139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (17)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,9 +874,9 @@ GameObject:
   m_Component:
   - component: {fileID: 195140958}
   - component: {fileID: 195140959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (9)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -958,9 +958,9 @@ GameObject:
   m_Component:
   - component: {fileID: 290228678}
   - component: {fileID: 290228679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (23)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1042,9 +1042,9 @@ GameObject:
   m_Component:
   - component: {fileID: 401946456}
   - component: {fileID: 401946457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (54)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,9 +1126,9 @@ GameObject:
   m_Component:
   - component: {fileID: 412561248}
   - component: {fileID: 412561249}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (37)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1271,9 +1271,9 @@ GameObject:
   m_Component:
   - component: {fileID: 473998032}
   - component: {fileID: 473998033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (51)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1509,9 +1509,9 @@ GameObject:
   m_Component:
   - component: {fileID: 573661600}
   - component: {fileID: 573661601}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (50)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1654,9 +1654,9 @@ GameObject:
   m_Component:
   - component: {fileID: 660340655}
   - component: {fileID: 660340656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (55)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1738,9 +1738,9 @@ GameObject:
   m_Component:
   - component: {fileID: 663422889}
   - component: {fileID: 663422890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (27)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1822,9 +1822,9 @@ GameObject:
   m_Component:
   - component: {fileID: 689084502}
   - component: {fileID: 689084503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (14)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1906,9 +1906,9 @@ GameObject:
   m_Component:
   - component: {fileID: 694292246}
   - component: {fileID: 694292247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (7)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,9 +2067,9 @@ GameObject:
   m_Component:
   - component: {fileID: 742118144}
   - component: {fileID: 742118145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (8)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2151,9 +2151,9 @@ GameObject:
   m_Component:
   - component: {fileID: 759206557}
   - component: {fileID: 759206558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (43)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2235,9 +2235,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1112795071}
   - component: {fileID: 1112795072}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (21)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2319,9 +2319,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1121100796}
   - component: {fileID: 1121100797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (10)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2403,9 +2403,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1128269360}
   - component: {fileID: 1128269361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (29)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2487,9 +2487,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1130956905}
   - component: {fileID: 1130956906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (42)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2571,9 +2571,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1136108115}
   - component: {fileID: 1136108116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (15)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2655,9 +2655,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1171801007}
   - component: {fileID: 1171801008}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (48)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2739,9 +2739,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1193219854}
   - component: {fileID: 1193219855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (25)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2823,9 +2823,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1216865670}
   - component: {fileID: 1216865671}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (53)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2907,9 +2907,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1221565487}
   - component: {fileID: 1221565488}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (45)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2991,9 +2991,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1326281643}
   - component: {fileID: 1326281644}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (44)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3075,9 +3075,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1371752377}
   - component: {fileID: 1371752378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (33)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3159,9 +3159,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1405579185}
   - component: {fileID: 1405579186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (40)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3243,9 +3243,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1433207698}
   - component: {fileID: 1433207699}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (49)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3327,9 +3327,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1445432605}
   - component: {fileID: 1445432606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (18)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3411,9 +3411,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1548396496}
   - component: {fileID: 1548396497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (35)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3495,9 +3495,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1553454849}
   - component: {fileID: 1553454850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (47)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3640,9 +3640,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1679726446}
   - component: {fileID: 1679726447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (52)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3724,9 +3724,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1681498462}
   - component: {fileID: 1681498463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (28)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3882,9 +3882,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1808662161}
   - component: {fileID: 1808662162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (16)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3966,9 +3966,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1854236155}
   - component: {fileID: 1854236156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (24)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4740,9 +4740,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1888449314}
   - component: {fileID: 1888449315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (34)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4824,9 +4824,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1891989779}
   - component: {fileID: 1891989780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (36)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4913,9 +4913,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1897643602}
   - component: {fileID: 1897643603}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (38)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4997,9 +4997,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1925923641}
   - component: {fileID: 1925923642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (19)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5081,9 +5081,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1963157653}
   - component: {fileID: 1963157654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (46)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5250,9 +5250,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2012467912}
   - component: {fileID: 2012467913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (41)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5334,9 +5334,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2041875791}
   - component: {fileID: 2041875792}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (5)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5418,9 +5418,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2059064103}
   - component: {fileID: 2059064104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (39)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5502,9 +5502,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2102079590}
   - component: {fileID: 2102079591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (22)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5586,9 +5586,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2130226362}
   - component: {fileID: 2130226363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (6)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5670,9 +5670,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2143243370}
   - component: {fileID: 2143243371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: esqueleto (11)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
