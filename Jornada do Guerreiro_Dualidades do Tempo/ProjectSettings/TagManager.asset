@@ -7,6 +7,7 @@ TagManager:
   - ground
   - Enemy
   - Aliado
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: "decora\xE7\xE3o"
     uniqueID: 3207070841
+    locked: 0
+  - name: fundo
+    uniqueID: 2156099695
     locked: 0
