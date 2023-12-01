@@ -80,7 +80,7 @@ public class Inimigo : MonoBehaviour
                 if (collider.gameObject.layer == jogadorLayer)
                 {
                     Debug.Log("Ataque acertou o jogador");
-                    Playerhealth playerHealth = collider.GetComponent<Playerhealth>();
+                    PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
                     if (playerHealth != null)
                     {
                         playerHealth.TakeDamage(danoDaEspada);

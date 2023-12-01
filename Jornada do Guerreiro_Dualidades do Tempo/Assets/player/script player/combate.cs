@@ -2,46 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class combate : MonoBehaviour
+public class Combate : MonoBehaviour
 {
-     
-     public Animator animator;
+    public Animator animator;
+    public bool isAttackable = true;
+    public Transform PontoDeAtaque;
+    public string enemyTag = "Enemy";
+    public float ataqueRange = 0.5f;
+    public int danoDeAtaque = 40;
 
-     public Transform PontoDeAtaque;
-     public LayerMask enemyLayers;
-
-     public float ataqueRange = 0.5f;
-     public int danoDeAtaque = 40;
-
-    // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Z))
-       {
-          Ataque();
-       }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Ataque();
+        }
     }
 
     void Ataque()
     {
-        //inicia a animaÃ§Ã£o de ataque
         animator.SetTrigger("Ataque");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PontoDeAtaque.position, ataqueRange);
 
-        //detecta os inimigos no range do ataque
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PontoDeAtaque.position, ataqueRange, enemyLayers);
-
-        //calculo do dano
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().ReceberDano(danoDeAtaque);
-        }
+            if (enemy.CompareTag(enemyTag))
+            {
+                // Se o inimigo for a abelha, aplique dano
+                Abelha abelha = enemy.GetComponent<Abelha>();
+                if (abelha != null)
+                {
+                    abelha.TakeDamage(danoDeAtaque);
+                    Debug.Log("Abelha atingida: " + abelha.name);
+                }
+            }
 
+            // Adicione uma verificação para evitar chamar métodos em fantasmas diretamente
+            GhostController ghost = enemy.GetComponent<GhostController>();
+            if (ghost != null)
+            {
+                // Se o inimigo for um fantasma, aplique dano
+                ghost.TakeDamage(danoDeAtaque);
+                Debug.Log("Fantasma atingido: " + ghost.name);
+            }
+        }
     }
 
+
     void OnDrawGizmosSelected()
-    {   
-        if(PontoDeAtaque == null)
-        return;
+    {
+        if (PontoDeAtaque == null)
+            return;
         Gizmos.DrawWireSphere(PontoDeAtaque.position, ataqueRange);
     }
 }

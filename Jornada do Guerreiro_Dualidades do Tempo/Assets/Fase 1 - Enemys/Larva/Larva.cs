@@ -26,13 +26,11 @@ public class Larva : MonoBehaviour
         StartCoroutine(DestruirAposTempo());
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Obtenha a refer�ncia do script Playerhealth
-            Playerhealth playerHealth = collision.gameObject.GetComponent<Playerhealth>();
-
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(1);
@@ -51,6 +49,7 @@ public class Larva : MonoBehaviour
         }
     }
 
+   
     IEnumerator DestruirAposTempo()
     {
         while (tempoParaDestruir > 0)
@@ -106,4 +105,5 @@ public class Larva : MonoBehaviour
             }
         }
     }
+
 }

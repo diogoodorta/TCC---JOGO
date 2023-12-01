@@ -5,7 +5,7 @@ public class Clerigo : MonoBehaviour
     public float vida = 22;
     public float cura = 10;
     public float dano = 1;
-    public Playerhealth playerHealth;
+    public PlayerHealth playerHealth;
     public float tempoParaDestruir = 3.0f;
     public float deteccaoDistancia = 15f;
     public float projétilVelocidade = 12f;
@@ -77,8 +77,6 @@ public class Clerigo : MonoBehaviour
         {
             playerHealth.TakeDamage(1);
         }
-
-
     }
 
 
@@ -141,7 +139,7 @@ public class Clerigo : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Playerhealth player = other.GetComponent<Playerhealth>();
+            PlayerHealth player = other.GetComponent<PlayerHealth>();
             if (player != null)
             {
                 int danoInt = Mathf.RoundToInt(dano); // Converte dano de float para int

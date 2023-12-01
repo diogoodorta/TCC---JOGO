@@ -9,6 +9,7 @@ public class Shieldbearer : MonoBehaviour
     public float empurraoForca = 10.0f;
     public float alcanceDeVisao = 5.0f;
     public float distanciaDeIda = 5.0f; // Distância entre os pontos de ida e volta
+    public PlayerHealth playerHealth;
 
     public int vida = 3;
     public float atrasoAntesDeDestruir = 2.0f;

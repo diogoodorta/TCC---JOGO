@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2559972025270554764}
   - component: {fileID: 2051159507376794234}
   m_Layer: 0
-  m_Name: prisioneiro
+  m_Name: Prisioneiro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

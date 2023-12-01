@@ -8,6 +8,7 @@ public class move : MonoBehaviour
     public float speed = 8f;
     public float jumpingPower = 5f;
     private bool isFacingRight = true;
+    public bool isControllable = true;
 
     public Animator animator;
 

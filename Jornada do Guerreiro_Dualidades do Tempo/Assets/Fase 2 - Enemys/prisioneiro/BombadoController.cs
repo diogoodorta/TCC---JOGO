@@ -1,25 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-public class BombadoController : MonoBehaviour, IDamageable
+public class BombadoController : MonoBehaviour
 {
     public int maxHealth = 200;
     public float moveSpeed = 2f;
     public float kickCooldown = 3f;
+    public float detectionRange = 5f;
+    public float kickRange = 1.5f;
 
     private int currentHealth;
     private bool isDead = false;
     private Animator animator;
     private Rigidbody2D rb;
     private bool canKick = true;
+    private bool isCooldownActive = false;
+    private Transform player;
 
-    public Transform kickPoint;  // Posi��o do ponto de ataque (p�)
+    public Transform kickPoint;
 
     private void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -28,18 +33,39 @@ public class BombadoController : MonoBehaviour, IDamageable
         {
             Move();
 
-            if (CanKick())
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+            if (CanKick() && distanceToPlayer < detectionRange)
             {
                 StartCoroutine(KickCooldown());
-                Kick();
+
+                if (distanceToPlayer < kickRange)
+                {
+                    Kick();
+                }
             }
+
+            FlipSprite();
         }
     }
 
     private void Move()
     {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
         animator.SetBool("isWalking", true);
+    }
+
+    private void FlipSprite()
+    {
+        if (player.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     private bool CanKick()
@@ -49,33 +75,27 @@ public class BombadoController : MonoBehaviour, IDamageable
 
     private void Kick()
     {
-        // Ativa a anima��o de chut�o
         animator.SetTrigger("Kick");
-    }
 
-    // Implementa��o do m�todo da interface IDamageable
-    public void TakeDamage(int damage)
-    {
-        if (!isDead)
+        // Encontrar o componente PlayerHealth no cenário
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+
+        if (playerHealth != null)
         {
-            currentHealth -= damage;
-
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
+            playerHealth.TakeDamageKick(2);
+        }
+        else
+        {
+            Debug.LogWarning("O jogador não possui o script PlayerHealth.");
         }
     }
 
     private IEnumerator KickCooldown()
     {
-        // Define a vari�vel de cooldown para false
         canKick = false;
 
-        // Aguarda o tempo de cooldown
         yield return new WaitForSeconds(kickCooldown);
 
-        // Reset a vari�vel de cooldown para true
         canKick = true;
     }
 
@@ -84,17 +104,17 @@ public class BombadoController : MonoBehaviour, IDamageable
         isDead = true;
         animator.SetTrigger("Die");
 
-
-        // Desativa o GameObject ap�s 5 segundos (ajuste conforme necess�rio)
         StartCoroutine(DestroyGameObjectAfterDelay());
     }
 
     private IEnumerator DestroyGameObjectAfterDelay()
     {
-        // Aguarde um tempo antes de destruir o GameObject (opcional)
         yield return new WaitForSeconds(5f);
-
-        // Destrua o GameObject
         Destroy(gameObject);
+    }
+
+    private void PararTodasAcoes()
+    {
+        // Implemente a lógica para parar todas as ações do jogador aqui
     }
 }

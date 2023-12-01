@@ -40,19 +40,25 @@ public class ZombieController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !isDead)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Se o zumbi colidir com o jogador, inicia o ataque.
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isAttacking", true);
-            Attack();
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(1);
+
+                // Se o zumbi colidir com o jogador, inicia o ataque.
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isAttacking", true);
+                Attack();
+            }
         }
     }
 
     private void Attack()
     {
         // Lógica de ataque.
-        player.GetComponent<Playerhealth>().ReceberDano(damage);
+        player.GetComponent<PlayerHealth>().ReceberDano(damage);
     }
 
     public void Die()
