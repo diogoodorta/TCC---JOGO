@@ -12,6 +12,11 @@ public class DialogTrigger : MonoBehaviour
         FindObjectOfType<DialogManager>().OpenDialogue(messages, actors);
     }
 
+        public void ExitGame()
+   {
+       Debug.Log("Sair do Jogo");
+       Application.Quit();
+   }
 }
 
 
@@ -28,3 +33,5 @@ public class Actor
     public string name;
     public Sprite sprite;
 }
+
+
