@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inimigo : MonoBehaviour
+public class SoldadoPossuido : MonoBehaviour, IDamageable
 {
     public float vida = 20;
     public int danoDaEspada = 1;
@@ -18,16 +18,17 @@ public class Inimigo : MonoBehaviour
     private float cooldownMorte = 2f;
     private float cooldownMorteTimer = 0f;
     private Transform jogador;
-
     private Animator animator;
     private bool podeMover = true;
 
     void Start()
     {
-        jogador = GameObject.FindWithTag("Player").transform;
+        jogador = GameObject.FindWithTag("Player")?.transform;
+
         if (jogador != null)
         {
             animator = GetComponent<Animator>();
+            jogadorLayer = LayerMask.GetMask("Player"); // Defina o LayerMask aqui
         }
         else
         {
@@ -38,7 +39,7 @@ public class Inimigo : MonoBehaviour
 
     void Update()
     {
-        if (!estaMorto && podeMover)
+        if (!estaMorto && podeMover && jogador != null)
         {
             float distanciaParaJogador = Vector2.Distance(transform.position, jogador.position);
 
@@ -59,31 +60,74 @@ public class Inimigo : MonoBehaviour
 
                 if (cooldownMorteTimer <= 0f)
                 {
-                    Destroy(gameObject);
+                    EncerrarAtividades();
                 }
             }
         }
     }
 
+    void EncerrarAtividades()
+    {
+        // Desativar controles de movimento (se houver)
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        // Desligar colisores
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        // Iniciar animação de morte (se houver um componente Animator)
+        if (animator != null)
+        {
+            animator.SetBool("Morto", true);
+        }
+
+        // Desativar outros scripts (adicione esta linha se você tiver outros scripts)
+        // Exemplo: Componente de movimento
+        // move movimentoScript = GetComponent<move>();
+        // if (movimentoScript != null)
+        // {
+        //     movimentoScript.enabled = false;
+        // }
+
+        // Iniciar a rotina de cooldown
+        StartCoroutine(IniciarCooldown());
+    }
+
+    IEnumerator IniciarCooldown()
+    {
+        yield return new WaitForSeconds(4f); // Tempo de cooldown
+
+        // Autodestruir o GameObject
+        Destroy(gameObject);
+    }
+
     void AtacarJogador()
     {
-        if (Time.time - tempoUltimoAtaque >= tempoEntreAtaques)
+        if (Time.time >= tempoUltimoAtaque + tempoEntreAtaques)
         {
-            animator.SetTrigger("Atacar");
+            animator.SetTrigger("Atacar");  // Inicie a animação aqui
 
-            Debug.Log("Ataque do inimigo iniciado");
+            Debug.Log("Ataque do SoldadoPossuído iniciado");
 
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(espadaTransform.position, alcanceDoAtaque, jogadorLayer);
 
             foreach (Collider2D collider in hitColliders)
             {
-                if (collider.gameObject.layer == jogadorLayer)
+                if (collider.CompareTag("Player"))
                 {
                     Debug.Log("Ataque acertou o jogador");
                     PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
                     if (playerHealth != null)
                     {
-                        playerHealth.TakeDamage(danoDaEspada);
+                        playerHealth.TakeDamageEspada(danoDaEspada); // Corrija esta linha
                         Debug.Log("Dano causado ao jogador");
                     }
                     else
@@ -97,15 +141,27 @@ public class Inimigo : MonoBehaviour
         }
     }
 
+    public void ReceberDano(int amount)
+    {
+        vida -= amount;
+        VerificarVida();
+    }
+
     public void TakeDamage(int damage)
     {
         vida -= damage;
-        if (vida <= 0)
+        VerificarVida();
+    }
+
+    private void VerificarVida()
+    {
+        if (vida <= 0 && !estaMorto)
         {
             estaMorto = true;
             podeMover = false;
             animator.SetBool("Morto", true);
             cooldownMorteTimer = cooldownMorte;
+            EncerrarAtividades();
         }
     }
 }

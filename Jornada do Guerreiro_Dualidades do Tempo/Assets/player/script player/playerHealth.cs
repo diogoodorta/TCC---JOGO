@@ -130,6 +130,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamageEspada(int amount)
+    {
+        // Verifique se o cooldown não está ativo antes de aplicar o dano
+        if (!isCooldownActive)
+        {
+            health -= amount;
+            Debug.Log("Jogador atingido pela 'Espada' com a espada! Vida do jogador: " + health);
+
+            // Verifique se a vida do jogador chegou a zero ou menos
+            if (health <= 0)
+            {
+                PararTodasAcoes();
+            }
+        }
+    }
+
     public void ReceberDano(int amount)
     {
         TakeDamage(amount);
@@ -153,4 +169,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             
         }
     }
+
 }

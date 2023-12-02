@@ -64,9 +64,19 @@ public class Combate : MonoBehaviour
                 larva.TakeDamage(danoDeAtaque);
                 Debug.Log("Larva atingida: " + larva.name);
             }
+
+            if (enemy.CompareTag(enemyTag))
+            {
+                // Se o inimigo for SoldadoPossuido, aplique dano
+                SoldadoPossuido soldado = enemy.GetComponent<SoldadoPossuido>();
+                if (soldado != null)
+                {
+                    soldado.ReceberDano(danoDeAtaque);
+                    Debug.Log("SoldadoPossuido atingido: " + soldado.name);
+                }
+            }
         }
     }
-
 
     void OnDrawGizmosSelected()
     {
@@ -75,3 +85,7 @@ public class Combate : MonoBehaviour
         Gizmos.DrawWireSphere(PontoDeAtaque.position, ataqueRange);
     }
 }
+
+
+    
+    
