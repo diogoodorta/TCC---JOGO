@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class Larva : MonoBehaviour
 {
-    public Transform[] patrolPoints;
     public float moveSpeed;
-    public int patrolDestination;
 
     public int vidaMaxima = 3;
     private int vidaAtual;
@@ -13,97 +11,100 @@ public class Larva : MonoBehaviour
     private Animator animator;
 
     private bool morrendo = false;
-    private float tempoParaDestruirInicial = 3f;
-    private float tempoParaDestruir; // Usaremos essa vari�vel para controlar o tempo restante
+    private float cooldownParaMorte = 4f;
+    private bool podeMorrer = true;
+    
+
+    private Vector3 direcaoMovimento = Vector3.right; // Direção inicial para a direita
 
     void Start()
     {
         vidaAtual = vidaMaxima;
         animator = GetComponent<Animator>();
-        tempoParaDestruir = tempoParaDestruirInicial;
-
-        // Inicie o tempo de destrui��o quando o objeto � instanciado
-        StartCoroutine(DestruirAposTempo());
+        StartCoroutine(MovimentacaoLoop());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Colisão com jogador detectada pela Larva.");
+
+            int danoDaLarva = 1;
+
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(1);
-
-                // Reduza a vida da larva
-                vidaAtual--;
-
-                if (vidaAtual <= 0)
-                {
-                    // Se a vida da larva chegar a 0, inicie a anima��o de morte
-                    Morrer();
-                    animator.SetTrigger("morte");
-
-                }
+                Debug.Log("Chamando TakeDamageLarva no jogador.");
+                playerHealth.TakeDamageLarva(danoDaLarva);
             }
         }
     }
 
-   
-    IEnumerator DestruirAposTempo()
+    public void ForcarFlipEInverterDirecao()
     {
-        while (tempoParaDestruir > 0)
-        {
-            // Aguarde um pequeno intervalo
-            yield return new WaitForSeconds(0.1f);
-
-            // Reduza o tempo de destrui��o
-            tempoParaDestruir -= 0.1f;
-        }
-
-        // Inicie a anima��o de morte e destrua o GameObject
-        Morrer();
+        // Inverte a direção e flipa a escala
+        direcaoMovimento *= -1;
+        Flip();
     }
 
-    private void Morrer()
+    IEnumerator MovimentacaoLoop()
     {
-        if (!morrendo && animator != null)
+        while (!morrendo)
         {
-            morrendo = true; // Marque a larva como morrendo
-            animator.SetTrigger("Morrer"); // Assumindo que voc� tenha uma trigger "Morrer" na sua anima��o
+            // Move em direção à próxima posição
+            transform.Translate(direcaoMovimento * moveSpeed * Time.deltaTime);
+
+            yield return null;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Flip()
     {
-        if (!morrendo) // Verifique se a larva n�o est� morrendo
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
+    }
+
+    IEnumerator MorrerComCooldown()
+    {
+        morrendo = true; // Marque a larva como morrendo
+        animator.SetTrigger("morte"); // Inicie a animação de morte
+
+        podeMorrer = false; // Impede que a morte seja chamada novamente enquanto está no cooldown
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        // Congela a posição antes de desativar os colisores
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        // Desativa todos os colisores da Larva
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D collider in colliders)
         {
-            // Coloque o restante do c�digo aqui
-            if (vidaAtual <= 0)
-            {
-            }
+            collider.enabled = false;
         }
 
-        if (patrolDestination == 0)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoints[0].position) < 0.2f)
-            {
-                transform.localScale = new Vector3(3, 3, 3);
-                patrolDestination = 1;
-            }
-        }
+        yield return new WaitForSeconds(cooldownParaMorte);
 
-        if (patrolDestination == 1)
+        podeMorrer = true; // Permite chamar a morte novamente após o cooldown
+
+        // Destrói o GameObject após o cooldown
+        Destroy(gameObject);
+    }
+
+
+    public void TakeDamage(int amount)
+    {
+        if (!morrendo)
         {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.2f)
+            vidaAtual -= amount;
+            Debug.Log("Larva recebeu dano: " + vidaAtual);
+
+            if (vidaAtual <= 0 && podeMorrer)
             {
-                transform.localScale = new Vector3(-3, 3, 3);
-                patrolDestination = 0;
+                StartCoroutine(MorrerComCooldown());
             }
         }
     }
-
 }

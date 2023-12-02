@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BombadoController : MonoBehaviour
 {
-    public int maxHealth = 200;
+    public int maxHealth = 40;
     public float moveSpeed = 2f;
     public float kickCooldown = 3f;
     public float detectionRange = 5f;
@@ -14,8 +14,9 @@ public class BombadoController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private bool canKick = true;
-    private bool isCooldownActive = false;
     private Transform player;
+    private Collider2D bombadoCollider;
+   
 
     public Transform kickPoint;
 
@@ -25,6 +26,11 @@ public class BombadoController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        bombadoCollider = GetComponent<Collider2D>();
+        bombadoCollider.isTrigger = false; // ou true, dependendo da sua necessidade
+        rb.isKinematic = false; // ou true, dependendo da sua necessidade
+
     }
 
     private void Update()
@@ -97,6 +103,20 @@ public class BombadoController : MonoBehaviour
         yield return new WaitForSeconds(kickCooldown);
 
         canKick = true;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (!isDead)
+        {
+            currentHealth -= amount;
+            Debug.Log("Bombado atingido! Vida do Bombado: " + currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }
     }
 
     private void Die()

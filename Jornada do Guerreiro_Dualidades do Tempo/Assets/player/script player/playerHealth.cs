@@ -123,6 +123,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamageLarva(int quantidade)
+    {
+        Debug.Log("Jogador atingido pela Larva! Dano: " + quantidade);
+
+        if (!isCooldownActive)
+        {
+            health -= quantidade;
+
+            if (health <= 0)
+            {
+                Debug.Log("Player sem vida. Executando ações de morte.");
+                PararTodasAcoes();
+            }
+        }
+    }
+
     public void ReceberDano(int amount)
     {
         TakeDamage(amount);

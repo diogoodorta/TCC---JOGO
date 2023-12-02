@@ -21,6 +21,7 @@ public class Combate : MonoBehaviour
 
     void Ataque()
     {
+        Debug.Log("Ataque chamado");  // Adicione essa linha
         animator.SetTrigger("Ataque");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PontoDeAtaque.position, ataqueRange);
 
@@ -44,6 +45,24 @@ public class Combate : MonoBehaviour
                 // Se o inimigo for um fantasma, aplique dano
                 ghost.TakeDamage(danoDeAtaque);
                 Debug.Log("Fantasma atingido: " + ghost.name);
+            }
+
+            // Adicione uma verificação para o BombadoController
+            BombadoController bombado = enemy.GetComponent<BombadoController>();
+            if (bombado != null)
+            {
+                // Se o inimigo for o bombado, aplique dano
+                bombado.TakeDamage(danoDeAtaque);
+                Debug.Log("Bombado atingido: " + bombado.name);
+            }
+
+            // Adicione uma verificação para a Larva
+            Larva larva = enemy.GetComponent<Larva>();
+            if (larva != null)
+            {
+                // Se o inimigo for a larva, aplique dano
+                larva.TakeDamage(danoDeAtaque);
+                Debug.Log("Larva atingida: " + larva.name);
             }
         }
     }

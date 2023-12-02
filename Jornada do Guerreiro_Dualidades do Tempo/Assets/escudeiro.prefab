@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7560184655340947408}
   - component: {fileID: 2180821680121407432}
   m_Layer: 0
-  m_Name: escudeiro
+  m_Name: Escudeiro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
