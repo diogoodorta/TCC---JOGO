@@ -16,6 +16,7 @@ public class movimentação : MonoBehaviour
     private float dir2;
     private int facingDir; 
     private bool isFacingRight = true;
+    private bool parado = true;
     
     public Transform frontCheck;
     public float speed;
@@ -52,7 +53,8 @@ public class movimentação : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z) && !isInCooldown)
         {
-
+            parado = false;
+            animator2.SetTrigger("dash2");
             StartCoroutine(DashControl());
         }
 
@@ -107,6 +109,7 @@ public class movimentação : MonoBehaviour
             if (!isDashing)
             {
                 body.velocity = new Vector2(dir * speed, body.velocity.y);
+                
             }
         }
     }
@@ -116,13 +119,9 @@ public class movimentação : MonoBehaviour
         float extraHeight = 1f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
 
-
         return ((raycastHit.collider != null));
 
     }
-
-
-
 
     private void JumpControl()
     {
@@ -172,7 +171,7 @@ public class movimentação : MonoBehaviour
     {
         isDashing = true;
         isInCooldown = true;
-        body.gravityScale = 0.0f; //takes out gravity for air dashes
+
 
         if (facingDir == 1)
         {
@@ -181,14 +180,18 @@ public class movimentação : MonoBehaviour
         else if(facingDir == 0)
         {
             body.velocity = Vector2.left* dashforce;
-        }      
+        }  
 
         yield return new WaitForSeconds(dashDuration); 
         isDashing = false;
-        body.gravityScale = 15.0f; //brings back gravity
+         
+        
 
         yield return new WaitForSeconds(dashDuration);
         isInCooldown = false;
+        animator2.SetTrigger("parado");
+        
+        
 
     }
 

@@ -13,7 +13,7 @@ public class Combate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             Ataque();
         }
@@ -38,7 +38,7 @@ public class Combate : MonoBehaviour
                 }
             }
 
-            // Adicione uma verificação para evitar chamar métodos em fantasmas diretamente
+            // Adicione uma verificaï¿½ï¿½o para evitar chamar mï¿½todos em fantasmas diretamente
             GhostController ghost = enemy.GetComponent<GhostController>();
             if (ghost != null)
             {
@@ -47,7 +47,7 @@ public class Combate : MonoBehaviour
                 Debug.Log("Fantasma atingido: " + ghost.name);
             }
 
-            // Adicione uma verificação para o BombadoController
+            // Adicione uma verificaï¿½ï¿½o para o BombadoController
             BombadoController bombado = enemy.GetComponent<BombadoController>();
             if (bombado != null)
             {
@@ -56,7 +56,7 @@ public class Combate : MonoBehaviour
                 Debug.Log("Bombado atingido: " + bombado.name);
             }
 
-            // Adicione uma verificação para a Larva
+            // Adicione uma verificaï¿½ï¿½o para a Larva
             Larva larva = enemy.GetComponent<Larva>();
             if (larva != null)
             {

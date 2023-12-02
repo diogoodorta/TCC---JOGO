@@ -390,7 +390,7 @@ MonoBehaviour:
   checkRadius: 0.9
   platformLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   groundCheck: {fileID: 552458103}
   groundLayer:
     serializedVersion: 2
