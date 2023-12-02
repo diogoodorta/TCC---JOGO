@@ -14732,7 +14732,6 @@ GameObject:
   - component: {fileID: 2323308117652768286}
   - component: {fileID: 7895549805357689103}
   - component: {fileID: 8220618030379152648}
-  - component: {fileID: 6282163747439993974}
   - component: {fileID: 9135316467916775496}
   - component: {fileID: 8293031711887489600}
   - component: {fileID: 1013033691517886710}
@@ -14875,28 +14874,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &6282163747439993974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5484030005116580996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de00166f016fb8946a2b90440c5f6cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  jumpingPower: 8
-  isControllable: 1
-  animator: {fileID: 9135316467916775496}
-  rb: {fileID: 7895549805357689103}
-  groundCheck: {fileID: 3953760083292208458}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  tr: {fileID: 1013033691517886710}
 --- !u!95 &9135316467916775496
 Animator:
   serializedVersion: 5

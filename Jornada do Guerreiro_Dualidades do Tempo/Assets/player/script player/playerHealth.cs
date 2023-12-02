@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool isTrigger = false; // Flag para indicar o estado Is Trigger
 
     // Adicione referï¿½ncias aos scripts de movimento e combate, se necessï¿½rio
-    private move playerMoveScript;
+    private movimentação playerMoveScript;
     private Combate playerCombatScript;
     private Animator playerAnimator;
 
