@@ -10,7 +10,9 @@ public class Abelha : MonoBehaviour, IDamageable
     public float agroRange;
     public Transform castPoint;
     public float speed;
+
     public Animator animator;
+
     public float distanceToGround = 1f;
     public int health = 3;
 
@@ -79,6 +81,7 @@ public class Abelha : MonoBehaviour, IDamageable
         {
             rb.velocity = new Vector2(side * speed, rb.velocity.y);
         }
+        
     }
 
 
@@ -139,6 +142,7 @@ public class Abelha : MonoBehaviour, IDamageable
         if (health <= 0)
         {
             Die();
+            
         }
     }
 
@@ -148,11 +152,7 @@ public class Abelha : MonoBehaviour, IDamageable
             return;
 
         isDead = true;
-
-        if (animator != null)
-        {
-            animator.SetTrigger("MorrerTrigger");
-        }
+        animator.SetTrigger("morte");
 
         EncerrarAcoes();
 
@@ -196,7 +196,6 @@ public class Abelha : MonoBehaviour, IDamageable
     IEnumerator MorrerCoroutine()
     {
         isDead = true; // Define a flag de morte como verdadeira
-        animator.SetTrigger("MorrerTrigger"); // Ativar o trigger de morte
 
         // Aguarde o tempo da animação de morte
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
@@ -235,11 +234,6 @@ public class Abelha : MonoBehaviour, IDamageable
 
     void EncerrarAcoes()
     {
-        // Pare as animações da abelha
-        if (animator != null)
-        {
-            animator.enabled = false; // Isso interromperá as animações
-        }
 
         // Desative os colisores da abelha
         Collider2D[] coliders = GetComponentsInChildren<Collider2D>();

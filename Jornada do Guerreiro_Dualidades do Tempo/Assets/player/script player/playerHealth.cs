@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool isCooldownActive = false;
     private bool isTrigger = false; // Flag para indicar o estado Is Trigger
 
-    // Adicione referências aos scripts de movimento e combate, se necessário
+    // Adicione referï¿½ncias aos scripts de movimento e combate, se necessï¿½rio
     private move playerMoveScript;
     private Combate playerCombatScript;
     private Animator playerAnimator;
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (health <= 0 && !isTrigger)
         {
-            // Se a vida chegar a zero e não estivermos no estado Is Trigger, execute ações de desligamento
+            // Se a vida chegar a zero e nï¿½o estivermos no estado Is Trigger, execute aï¿½ï¿½es de desligamento
             PararTodasAcoes();
         }
     }
@@ -47,14 +47,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             playerCombatScript.enabled = false;
         }
 
-        // Desligar colisões
+        // Desligar colisï¿½es
         Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
             collider.enabled = false;
         }
 
-        // Congelar a posição
+        // Congelar a posiï¿½ï¿½o
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -65,17 +65,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Defina a flag isTrigger como true
         isTrigger = true;
 
-        // Iniciar animação de morte
-        if (playerAnimator != null)
-        {
-            // Desativar outras camadas de animação além da camada padrão (Layer 0)
-            for (int i = 1; i < playerAnimator.layerCount; i++)
-            {
-                playerAnimator.SetLayerWeight(i, 0);
-            }
-
-            playerAnimator.SetTrigger("Morte");
-        }
+        // Iniciar animaï¿½ï¿½o de morte
+        playerAnimator.SetTrigger("Morte");
 
         StartCoroutine(StartCooldown());
     }
@@ -91,7 +82,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         isCooldownActive = false;
 
-        // Destruir o jogador após o cooldown
+        // Destruir o jogador apï¿½s o cooldown
         Destroy(gameObject);
     }
 
@@ -133,7 +124,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
             if (health <= 0)
             {
-                Debug.Log("Player sem vida. Executando ações de morte.");
+                Debug.Log("Player sem vida. Executando aï¿½ï¿½es de morte.");
                 PararTodasAcoes();
             }
         }
@@ -146,7 +137,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colisão com: " + collision.gameObject.name);
+        Debug.Log("Colisï¿½o com: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -157,7 +148,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             }
             else
             {
-                Debug.LogWarning("O inimigo não implementa a interface IDamageable.");
+                Debug.LogWarning("O inimigo nï¿½o implementa a interface IDamageable.");
             }
             
         }
