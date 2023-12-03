@@ -17,6 +17,7 @@ public class movimentação : MonoBehaviour
     private int facingDir; 
     private bool isFacingRight = true;
     private bool parado = true;
+    public bool isControllable = true;
     
     public Transform frontCheck;
     public float speed;

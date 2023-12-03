@@ -9,14 +9,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool isTrigger = false; // Flag para indicar o estado Is Trigger
 
     // Adicione referï¿½ncias aos scripts de movimento e combate, se necessï¿½rio
-    private movimentação playerMoveScript;
+    private movimentaÃ§Ã£o playerMoveScript;
     private Combate playerCombatScript;
     private Animator playerAnimator;
 
     void Start()
     {
         health = maxHealth;
-        playerMoveScript = GetComponent<move>();
+        playerMoveScript = GetComponent<movimentaÃ§Ã£o>();
         playerCombatScript = GetComponent<Combate>();
         playerAnimator = GetComponent<Animator>();
     }
@@ -132,7 +132,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamageEspada(int amount)
     {
-        // Verifique se o cooldown não está ativo antes de aplicar o dano
+        // Verifique se o cooldown nï¿½o estï¿½ ativo antes de aplicar o dano
         if (!isCooldownActive)
         {
             health -= amount;
