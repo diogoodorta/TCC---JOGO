@@ -1004,6 +1004,11 @@ Transform:
   m_Father: {fileID: 707560803}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &296204988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3953760083292208458, guid: 4cdd282372c1d644d8907be7c85eec44, type: 3}
+  m_PrefabInstance: {fileID: 370306783199659366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313003977
 GameObject:
   m_ObjectHideFlags: 0
@@ -104446,6 +104451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29439923315890a45a54722cbbd50752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isControllable: 1
   frontCheck: {fileID: 0}
   speed: 0
   wallSlideSpeed: 0
@@ -104456,15 +104462,20 @@ MonoBehaviour:
   dashforce: 0
   dashDuration: 0
   dashCooldown: 0
-  animator2: {fileID: 0}
+  animator2: {fileID: 222857918081098531}
   checkRadius: 0
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 296204988}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &222857918081098531 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9135316467916775496, guid: 4cdd282372c1d644d8907be7c85eec44, type: 3}
+  m_PrefabInstance: {fileID: 370306783199659366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &370306783199659366
 PrefabInstance:
   m_ObjectHideFlags: 0
