@@ -5,12 +5,16 @@ public class Clerigo : MonoBehaviour
     public float vida = 22;
     public float cura = 10;
     public float dano = 1;
+    public PlayerHealth playerHealth;
+    public float tempoParaDestruir = 3.0f;
     public float deteccaoDistancia = 15f;
     public float projétilVelocidade = 12f;
     public float cooldown = 1.5f;
     public GameObject projétilDeCuraPrefab;
 
     private Animator animator;
+
+
     private bool estaMorto = false;
     private bool lancandoProjétil = false;
     private float cooldownTimer = 1f;
@@ -21,47 +25,64 @@ public class Clerigo : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
     {
-        cooldownTimer -= Time.deltaTime;
-
-        if (cooldownTimer <= 0f)
+        if (!estaMorto) // Verifique se o Clérigo não está morto
         {
-            DetectarAliadosEmPerigo();
+            cooldownTimer -= Time.deltaTime;
 
-            if (alvo != null)
+            if (cooldownTimer <= 0f)
             {
-                // Defina o gatilho da animação para "LancandoProjétil"
-                animator.SetTrigger("LancandoProjétil");
-                LancarProjétilDeCura();
-                cooldownTimer = cooldown;
-            }
+                DetectarAliadosEmPerigo();
 
-            // Verifique se a animação de lançamento do projétil está em andamento
-            if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
-            {
-                lancandoProjétil = false;
-
-            }
-
-            if (estaMorto)
-            {
-                cooldownMorteTimer -= Time.deltaTime;
-
-                if (cooldownMorteTimer <= 0)
+                if (alvo != null)
                 {
-                    // Após o cooldown da animação de morte, destrua o objeto
-                    Destroy(gameObject);
+                    // Defina o gatilho da animação para "LancandoProjétil"
+                    animator.SetTrigger("lançar");
+                    LancarProjétilDeCura();
+                    cooldownTimer = cooldown;
+                }
+                else
+                {
+                  animator.SetTrigger("respirar");    
                 }
 
-                return;  // Não faça mais nada se o Clérigo estiver morto
+                // Verifique se a animação de lançamento do projétil está em andamento
+                if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
+                {
+                    lancandoProjétil = false;
+                }
+            }
+
+            if (vida <= 0)
+            {
+                tempoParaDestruir -= Time.deltaTime;
+
+                if (tempoParaDestruir <= 0)
+                {
+                    Morrer(); // Inicie a animação de morte
+                }
             }
         }
-
     }
+
+    void DestruirGameObject()
+    {
+        // Destrua o GameObject
+        Destroy(gameObject);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(1);
+        }
+    }
+
 
     // Método chamado quando a animação de lançamento do projétil termina
     public void TerminarLancamentoDeProjétil()
@@ -70,6 +91,8 @@ public class Clerigo : MonoBehaviour
         // A lógica após a animação de lançamento do projétil
         // Por exemplo, criar o projétil aqui, se necessário
     }
+
+
 
     private Transform alvo;
 
@@ -93,6 +116,7 @@ public class Clerigo : MonoBehaviour
         }
     }
 
+
     void LancarProjétilDeCura()
     {
         Vector3 direcao = alvo.position - transform.position;
@@ -107,6 +131,8 @@ public class Clerigo : MonoBehaviour
         Invoke("TerminarCura", 2f);  // Termina o processo de cura após 2 segundos
     }
 
+
+
     void TerminarCura()
     {
         Debug.Log("Cura terminou.");
@@ -117,14 +143,17 @@ public class Clerigo : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player player = other.GetComponent<Player>();
+            PlayerHealth player = other.GetComponent<PlayerHealth>();
             if (player != null)
             {
-                player.ReceberDano(dano);
+                int danoInt = Mathf.RoundToInt(dano); // Converte dano de float para int
+                player.ReceberDano(danoInt); // Passa o dano como int
                 Debug.Log("Clérigo causou dano ao jogador!");
             }
         }
     }
+
+
     void Morrer()
     {
         if (!estaMorto)
