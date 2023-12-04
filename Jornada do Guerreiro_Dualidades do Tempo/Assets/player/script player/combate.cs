@@ -16,12 +16,8 @@ public class Combate : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Ataque();
-            animator.SetBool("ARtaque",true);
         }
-        else
-        {
-            animator.SetBool("ARtaque",false);
-        }
+        
     }
 
     void Ataque()

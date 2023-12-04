@@ -8,12 +8,12 @@ public class Shieldbearer : MonoBehaviour
     public float velocidadePerseguicao = 4.0f;
     public float empurraoForca = 10.0f;
     public float alcanceDeVisao = 5.0f;
-    public float distanciaDeIda = 5.0f; // Distância entre os pontos de ida e volta
+    public float distanciaDeIda = 5.0f; // Distï¿½ncia entre os pontos de ida e volta
     public PlayerHealth playerHealth;
 
     public int vida = 3;
     public float atrasoAntesDeDestruir = 2.0f;
-    public Animator animador; // Referência ao componente Animator
+    public Animator animador; // Referï¿½ncia ao componente Animator
     public Transform jogador;
     public Transform pontoDeIda;
     public Transform pontoDeVolta;
@@ -21,7 +21,7 @@ public class Shieldbearer : MonoBehaviour
 
     private bool jogadorNaVisao = false;
     private bool derrotado = false;
-    private bool indoParaPontoDeVolta = false; // Adicione esta linha para declarar a variável
+    private bool indoParaPontoDeVolta = false; // Adicione esta linha para declarar a variï¿½vel
     private bool podeAndar = true; // Adicione esta linha para controlar se o inimigo pode andar
 
     private void Start()
@@ -43,7 +43,10 @@ public class Shieldbearer : MonoBehaviour
         }
 
         if (podeAndar)
-        {
+        { 
+
+            animador.SetTrigger("andar");
+
             if (jogadorNaVisao)
             {
                 // Perseguir o jogador
@@ -52,7 +55,7 @@ public class Shieldbearer : MonoBehaviour
             }
             else
             {
-                // Movimento padrão
+                // Movimento padrï¿½o
                 MovimentoPadraoShieldbearer();
             }
         }
@@ -60,10 +63,10 @@ public class Shieldbearer : MonoBehaviour
 
     private void MovimentoPadraoShieldbearer()
     {
-        // Movimento padrão ou movimento de ida e volta entre dois pontos
+        // Movimento padrï¿½o ou movimento de ida e volta entre dois pontos
         if (indoParaPontoDeVolta)
         {
-            // Move em direção ao ponto de volta
+            // Move em direï¿½ï¿½o ao ponto de volta
             Vector3 direcaoVolta = (pontoDeVolta.position - transform.position).normalized;
             transform.Translate(direcaoVolta * velocidadePadrao * Time.deltaTime);
 
@@ -75,7 +78,7 @@ public class Shieldbearer : MonoBehaviour
         }
         else
         {
-            // Move em direção ao ponto de ida
+            // Move em direï¿½ï¿½o ao ponto de ida
             Vector3 direcaoIda = (pontoDeIda.position - transform.position).normalized;
             transform.Translate(direcaoIda * velocidadePadrao * Time.deltaTime);
 
@@ -100,18 +103,19 @@ public class Shieldbearer : MonoBehaviour
                 }
                 else
                 {
-                    // Inicie a animação de dano
-                    animador.SetTrigger("Dano");
+                    // Inicie a animaï¿½ï¿½o de dano
+                    
                     // Impede o inimigo de andar temporariamente
                     StartCoroutine(PararAndarTemporariamente());
                 }
             }
             else
             {
-                // Lógica de empurrão
+                // Lï¿½gica de empurrï¿½o
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
                 Vector2 direcaoEmpurrao = -(jogador.position - transform.position).normalized;
                 rb.AddForce(direcaoEmpurrao * empurraoForca, ForceMode2D.Impulse);
+                animador.SetTrigger("Dano");
             }
         }
     }
@@ -127,14 +131,14 @@ public class Shieldbearer : MonoBehaviour
     {
         if (!derrotado)
         {
-            //Desative o Collider para que o inimigo não possa mais ser atingido.
+            //Desative o Collider para que o inimigo nï¿½o possa mais ser atingido.
             Collider2D collider = GetComponent<Collider2D>();
             if (collider != null)
             {
                 collider.enabled = false;
             }
 
-            // Reproduza a animação de morte, se houver um Animator.
+            // Reproduza a animaï¿½ï¿½o de morte, se houver um Animator.
             if (animador != null)
             {
                 animador.SetTrigger("Morte");
@@ -142,7 +146,7 @@ public class Shieldbearer : MonoBehaviour
 
             derrotado = true;
 
-            // Agende a destruição do objeto do inimigo após um atraso.
+            // Agende a destruiï¿½ï¿½o do objeto do inimigo apï¿½s um atraso.
             Invoke("DestruirInimigo", atrasoAntesDeDestruir);
         }
     }

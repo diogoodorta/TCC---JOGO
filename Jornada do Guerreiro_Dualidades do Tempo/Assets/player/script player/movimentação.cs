@@ -69,11 +69,13 @@ public class movimentação : MonoBehaviour
         {
             //animar quando estiver Correndo
             animator2.SetBool("taAndando", true);
+            animator2.SetBool("parado", true);
         }
         else
         {
             //animar parado
             animator2.SetBool("taAndando", false);
+            animator2.SetBool("parado", true);
         }
 
         if (IsGrounded())
@@ -81,13 +83,14 @@ public class movimentação : MonoBehaviour
             animator2.SetBool("taPulando", false);
             animator2.SetBool("wall", false);
             animator2.SetBool("no ar", false);
-            //animator2.SetBool("ARtaque", false);
+            animator2.SetBool("ARtaque", false);
         }
         else
         {
             animator2.SetBool("taPulando", true);
-            animator2.SetBool("no ar", true);
-            //animator2.SetBool("ARtaque", true);
+            animator2.SetBool("no ar", true);    
+            animator2.SetBool("taAndando", false);    
+              
         } 
 
 
@@ -142,7 +145,7 @@ public class movimentação : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && OnGround())
         {
             body.velocity = Vector2.up * jumpforce;
-
+            animator2.SetBool("ARtaque", true);
         }
 
     }
@@ -186,6 +189,7 @@ public class movimentação : MonoBehaviour
     {
         isDashing = true;
         isInCooldown = true;
+        animator2.SetBool("dashdow", true);
 
 
         if (facingDir == 1)
@@ -199,12 +203,14 @@ public class movimentação : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration); 
         isDashing = false;
-         animator2.SetTrigger("parado");
+        animator2.SetBool("dashdow", false);
+
         
         
 
         yield return new WaitForSeconds(dashDuration);
         isInCooldown = false;
+        
         
         
 
