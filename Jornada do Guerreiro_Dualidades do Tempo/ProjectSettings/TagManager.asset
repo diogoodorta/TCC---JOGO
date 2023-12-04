@@ -7,9 +7,14 @@ TagManager:
   - ground
   - Enemy
   - Aliado
+<<<<<<< HEAD
   - Portal
   - Boss
   - bossTag
+=======
+  - Ally
+  - OriginalFerrao
+>>>>>>> inimigos
   layers:
   - Default
   - TransparentFX
@@ -21,7 +26,7 @@ TagManager:
   - Enemy
   - Ally
   - Player
-  - 
+  - parede
   - 
   - 
   - 
@@ -56,6 +61,11 @@ TagManager:
   - name: "decora\xE7\xE3o"
     uniqueID: 3207070841
     locked: 0
+<<<<<<< HEAD
   - name: fundo
     uniqueID: 2156099695
+=======
+  - name: player
+    uniqueID: 3740075751
+>>>>>>> inimigos
     locked: 0

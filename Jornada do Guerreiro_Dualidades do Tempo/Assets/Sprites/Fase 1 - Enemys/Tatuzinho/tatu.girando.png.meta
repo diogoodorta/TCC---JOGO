@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,27 +110,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tatu.girando_0
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 147
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 3, z: 0, w: 6}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d06bb2aa18ef6bd47bc839f5904eb58e
-      internalID: 2066012602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tatu.girando_1
       rect:
         serializedVersion: 2
@@ -139,14 +118,14 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 6, z: 4, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5852a11276f37164eac78b12bbabb703
-      internalID: -2012423173
+      spriteID: d06bb2aa18ef6bd47bc839f5904eb58e
+      internalID: 2066012602
       vertices: []
       indices: 
       edges: []
@@ -160,14 +139,14 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 3, z: 4, w: 5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a473acfbf6213304c92968a119d753a4
-      internalID: -952705344
+      spriteID: 5852a11276f37164eac78b12bbabb703
+      internalID: -2012423173
       vertices: []
       indices: 
       edges: []
@@ -181,14 +160,14 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 7, y: 7, z: 6, w: 5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac44fcf2b0fb8b8409f8191b41ea2ab4
-      internalID: 1488416245
+      spriteID: a473acfbf6213304c92968a119d753a4
+      internalID: -952705344
       vertices: []
       indices: 
       edges: []
@@ -202,14 +181,14 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 6, z: 6, w: 5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 748b633419dcabc44be0ab0d1c5d8fda
-      internalID: 1134124287
+      spriteID: ac44fcf2b0fb8b8409f8191b41ea2ab4
+      internalID: 1488416245
       vertices: []
       indices: 
       edges: []
@@ -223,14 +202,35 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 2, z: 1, w: 2}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94b46b7731423bf4983703695f6d0e5b
-      internalID: -1769247154
+      spriteID: 748b633419dcabc44be0ab0d1c5d8fda
+      internalID: 1134124287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tatu.girando_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 147
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 803e7cd082f4f9044b9420326ab9a8ed
+      internalID: 1443954414
       vertices: []
       indices: 
       edges: []
