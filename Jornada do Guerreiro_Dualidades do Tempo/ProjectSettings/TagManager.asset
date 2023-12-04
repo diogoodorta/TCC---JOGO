@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ground
+  - Enemy
+  - Aliado
+  - Portal
+  - Boss
+  - bossTag
   layers:
   - Default
   - TransparentFX
@@ -11,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - ground
+  - Enemy
+  - Ally
+  - Player
   - 
   - 
   - 
@@ -40,4 +46,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1124625699
+    locked: 0
+  - name: "Ch\xE3o"
+    uniqueID: 3557094661
+    locked: 0
+  - name: "decora\xE7\xE3o"
+    uniqueID: 3207070841
+    locked: 0
+  - name: fundo
+    uniqueID: 2156099695
     locked: 0

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
-guid: 7c248133e1df9e946b1269c5be54cf9e
-========
-guid: 289213f485d2d8343bb157ad6c172ebf
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
+guid: 1201c14bb4ee74d8e99e56dc4f3f4fd1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,11 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
   spritePixelsToUnits: 100
-========
-  spritePixelsToUnits: 16
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,11 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       name: Futoro_PersonSprites_0
-========
-      name: protagonista.walljump.direita_0
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       rect:
         serializedVersion: 2
         x: 0
@@ -132,23 +120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       spriteID: dbce4e83f07094a32922cdaa79c11579
       internalID: -1825931381
-========
-      spriteID: 2d81f6ddd7eb1ec4a8303f613f0e9fb2
-      internalID: -1385642210
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       name: Futoro_PersonSprites_1
-========
-      name: protagonista.walljump.direita_1
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       rect:
         serializedVersion: 2
         x: 128
@@ -162,23 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       spriteID: 44a34c5d1290843a698de4caf4cf25fd
       internalID: 831398740
-========
-      spriteID: 3b29954b39ba7414ca4f5b41fd22fd7e
-      internalID: -835177625
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       name: Futoro_PersonSprites_2
-========
-      name: protagonista.walljump.direita_2
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       rect:
         serializedVersion: 2
         x: 0
@@ -192,7 +162,6 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       spriteID: 79e385d4a8fe9441f8cd2d6c79f4bfc7
       internalID: -851678419
       vertices: []
@@ -216,10 +185,6 @@ TextureImporter:
       bones: []
       spriteID: 75bb544102dc94fe6bbe448d1e0446bc
       internalID: 1086910532
-========
-      spriteID: 965870f1bd08bd245aaddb51bc41267a
-      internalID: -1479491652
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
       vertices: []
       indices: 
       edges: []
@@ -235,18 +200,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-<<<<<<<< HEAD:Jornada do Guerreiro_Dualidades do Tempo/Assets/LeanTween/Examples/Material/Futoro_PersonSprites.png.meta
       Futoro_PersonSprites_0: -1825931381
       Futoro_PersonSprites_3: 1086910532
       Futoro_PersonSprites_2: -851678419
       Futoro_PersonSprites_1: 831398740
   spritePackingTag: 
-========
-      protagonista.walljump.direita_0: -1385642210
-      protagonista.walljump.direita_1: -835177625
-      protagonista.walljump.direita_2: -1479491652
-  mipmapLimitGroupName: 
->>>>>>>> inimigos:Jornada do Guerreiro_Dualidades do Tempo/Assets/player/spriets do player/protagonista.walljump.direita.png.meta
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
