@@ -1,12 +1,6 @@
 using UnityEngine;
 
-public interface IDamable
-{
-    void SofrerDano(int dano);
-    void TakeDamage(int damage);
-}
-
-public class Playerhealth : MonoBehaviour, IDamable
+public class Playerhealth : MonoBehaviour
 {
     public int health;
     public int maxHealth = 1;
@@ -16,7 +10,7 @@ public class Playerhealth : MonoBehaviour, IDamable
         health = maxHealth;
     }
 
-    public void SofrerDano(int quantidade)
+    public void TakeDamage(int quantidade)
     {
         health -= quantidade;
         Debug.Log("Player recebeu " + quantidade + " de dano. Vida restante: " + health);
@@ -29,13 +23,7 @@ public class Playerhealth : MonoBehaviour, IDamable
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        Debug.Log("Método TakeDamage chamado com dano: " + damage);
-        SofrerDano(damage);
-    }
-
-    // Método para destruir o jogador
+    // Remova esse método se não estiver usando
     void DestruirJogador()
     {
         // Adicione qualquer outra lógica desejada antes de destruir o jogador

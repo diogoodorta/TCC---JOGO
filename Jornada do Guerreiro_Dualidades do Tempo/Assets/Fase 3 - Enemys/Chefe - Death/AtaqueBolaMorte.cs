@@ -1,69 +1,57 @@
 using UnityEngine;
+using System.Collections;
 
 public class AtaqueBolaMorte : MonoBehaviour
 {
     public int danoDaBola = 20;
-    public float velocidade = 5f; // Ajuste conforme necessário
+    public float velocidade = 5f;
+    public float tempoVida = 4f; // Tempo de vida em segundos
+    public float cooldown = 4f; // Cooldown em segundos
     private Transform jogador;
 
     void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Player").transform;
-        InvokeRepeating("CausarDanoAoJogador", 1f, 1f); // Chama a função a cada segundo (ajuste conforme necessário)
+        InvokeRepeating("CausarDanoAoJogador", 1f, 1f);
+        StartCoroutine(AutodestruirAposTempoVida());
     }
 
     void Update()
     {
-        // Garante que o jogador ainda existe (não foi destruído)
         if (jogador != null)
         {
-            // Move a bola em direção ao jogador
-            transform.position = Vector2.MoveTowards(transform.position, jogador.position, velocidade * Time.deltaTime);
-        }
-        else
-        {
-            // Se o jogador foi destruído, destrua a bola também
-            Destroy(gameObject);
+            Vector2 direcao = (jogador.position - transform.position).normalized;
+            transform.Translate(direcao * velocidade * Time.deltaTime);
         }
     }
 
     void CausarDanoAoJogador()
     {
-        if (jogador != null && Vector2.Distance(transform.position, jogador.position) < 1.5f) // Ajuste conforme necessário
-        {
-            Debug.Log("Bola da Morte causou dano contínuo ao jogador!");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
 
-            // Chame o método TakeDamage em vez de LevarDano
-            IDamable damable = jogador.GetComponent<IDamable>();
-            if (damable != null)
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
             {
-                damable.TakeDamage(danoDaBola);
-                Debug.Log("Jogador sofreu " + danoDaBola + " de dano contínuo. Vida restante: " + (damable as Playerhealth).health);
+                Debug.Log("Bola da Morte causou dano ao jogador!");
+
+                Playerhealth playerHealth = collider.GetComponent<Playerhealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(danoDaBola);
+                    Debug.Log("Jogador sofreu " + danoDaBola + " de dano. Vida restante: " + playerHealth.health);
+                }
+
+                Debug.Log("Destruindo a Bola da Morte.");
+                Destroy(gameObject);
             }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // Coroutine para autodestruir após o tempo de vida
+    IEnumerator AutodestruirAposTempoVida()
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Bola da Morte atingiu o jogador!");
-
-            // Chame o método TakeDamage em vez de LevarDano
-            IDamable damable = other.GetComponent<IDamable>();
-            if (damable != null)
-            {
-                damable.TakeDamage(danoDaBola);
-                Debug.Log("Jogador sofreu " + danoDaBola + " de dano. Vida restante: " + (damable as Playerhealth).health);
-            }
-            else
-            {
-                Debug.Log("Componente IDamable não encontrado no jogador.");
-            }
-
-            // Destruir a bola após causar dano
-            Debug.Log("Destruindo a Bola da Morte.");
-            Destroy(gameObject);
-        }
+        yield return new WaitForSeconds(tempoVida);
+        Destroy(gameObject);
     }
 }

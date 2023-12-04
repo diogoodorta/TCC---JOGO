@@ -2,46 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class combate : MonoBehaviour
+public class Combate : MonoBehaviour
 {
-     
-     public Animator animator;
+    public Animator animator;
+    public bool isAttackable = true;
+    public Transform PontoDeAtaque;
+    public string bossTag = "Boss"; // Altere para a tag correta do Boss
+    public float ataqueRange = 0.5f;
+    public int danoDeAtaque = 40;
 
-     public Transform PontoDeAtaque;
-     public LayerMask enemyLayers;
-
-     public float ataqueRange = 0.5f;
-     public int danoDeAtaque = 40;
-
-    // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Z))
-       {
-          Ataque();
-       }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Ataque();
+        }
     }
 
     void Ataque()
     {
-        //inicia a animação de ataque
+        Debug.Log("Ataque chamado");
         animator.SetTrigger("Ataque");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PontoDeAtaque.position, ataqueRange);
 
-        //detecta os inimigos no range do ataque
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PontoDeAtaque.position, ataqueRange, enemyLayers);
-
-        //calculo do dano
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().ReceberDano(danoDeAtaque);
+            if (enemy.CompareTag(bossTag))
+            {
+                // Verifique se o componente IDamable está presente no BossMorte
+                BossMorte boss = enemy.GetComponent<BossMorte>();
+                if (boss != null)
+                {
+                    boss.SofrerDano(danoDeAtaque);  // Correção aqui: Troque TakeDamage por SofrerDano
+                    Debug.Log("Boss atingido: " + boss.name);
+                }
+                else
+                {
+                    Debug.LogError("Componente BossMorte não encontrado no Boss.");
+                }
+            }
         }
-
     }
 
     void OnDrawGizmosSelected()
-    {   
-        if(PontoDeAtaque == null)
-        return;
+    {
+        if (PontoDeAtaque == null)
+            return;
         Gizmos.DrawWireSphere(PontoDeAtaque.position, ataqueRange);
     }
 }

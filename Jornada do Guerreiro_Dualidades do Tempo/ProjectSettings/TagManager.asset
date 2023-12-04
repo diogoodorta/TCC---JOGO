@@ -9,6 +9,7 @@ TagManager:
   - Aliado
   - Portal
   - Boss
+  - bossTag
   layers:
   - Default
   - TransparentFX
