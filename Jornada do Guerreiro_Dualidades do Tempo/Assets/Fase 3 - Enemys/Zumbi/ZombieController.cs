@@ -1,13 +1,18 @@
 using UnityEngine;
+using System.Collections;
 
 public class ZombieController : MonoBehaviour
 {
+    public int health = 100;
     public float speed = 3f;
+    public float attackCooldown = 2f;
+    public float attackRange = 1.5f;
     public int damage = 10;
 
     private Transform player;
     private Animator animator;
     private bool isDead = false;
+    private bool canAttack = true;
 
     private void Start()
     {
@@ -19,60 +24,110 @@ public class ZombieController : MonoBehaviour
     {
         if (player != null && !isDead)
         {
-            // L�gica para detectar o jogador e seguir em sua dire��o.
             Vector2 direction = (player.position - transform.position).normalized;
+            Move(direction);
 
-            // L�gica para anima��o de caminhada.
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isAttacking", false);
-
-            // Atualiza a posi��o usando direction e speed.
-            transform.Translate(direction * speed * Time.deltaTime);
-
-            // Rota��o do zumbi para enfrentar o jogador.
             if (direction != Vector2.zero)
             {
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                Flip(direction.x);
             }
-        }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            if (CanAttack() && distanceToPlayer < attackRange)
             {
-                playerHealth.TakeDamage(1);
-
-                // Se o zumbi colidir com o jogador, inicia o ataque.
+                StartCoroutine(AttackCooldown());
                 Attack();
             }
         }
     }
 
-    private void Attack()
+    private void Move(Vector2 direction)
     {
-        // L�gica de ataque.
-        player.GetComponent<PlayerHealth>().ReceberDano(damage);
+        transform.Translate(direction * speed * Time.deltaTime);
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isAttacking", false);
     }
 
-    public void Die()
+    private void Flip(float directionX)
     {
-        // L�gica para a morte.
+        if ((directionX > 0 && transform.localScale.x < 0) || (directionX < 0 && transform.localScale.x > 0))
+        {
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+    }
+
+    private bool CanAttack()
+    {
+        return canAttack;
+    }
+
+    private void Attack()
+    {
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
+
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamageZombie(damage);
+        }
+        else
+        {
+            Debug.LogWarning("O jogador não possui o script PlayerHealth.");
+        }
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (!isDead)
+        {
+            health -= amount;
+            Debug.Log("Zumbi atingido! Vida do Zumbi: " + health);
+
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
         isDead = true;
         animator.SetTrigger("morte");
 
-        // Desativa o GameObject ap�s 5 segundos (ajuste conforme necess�rio).
-        float delay = 5f;
-        Invoke("DeactivateGameObject", delay);
+        // Desativa os colisores
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        // Congela a posição
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        Invoke("DeactivateGameObject", 5f);
     }
 
     private void DeactivateGameObject()
     {
-        // Desativa o GameObject, tornando-o invis�vel e inativo no jogo.
         gameObject.SetActive(false);
     }
 }

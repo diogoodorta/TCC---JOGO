@@ -10,6 +10,7 @@ public class Shieldbearer : MonoBehaviour
     public float alcanceDeVisao = 5.0f;
     public float distanciaDeIda = 5.0f; // Dist�ncia entre os pontos de ida e volta
     public PlayerHealth playerHealth;
+    public Transform pontoDeEmpurrao; // Adicione esta linha para referenciar a Empty
 
     public int vida = 3;
     public float atrasoAntesDeDestruir = 2.0f;
@@ -36,6 +37,9 @@ public class Shieldbearer : MonoBehaviour
         if (distanciaParaJogador <= alcanceDeVisao)
         {
             jogadorNaVisao = true;
+
+            // Adicione a lógica de flip aqui
+            FlipSprite(Player.position.x - transform.position.x);
         }
         else
         {
@@ -43,8 +47,7 @@ public class Shieldbearer : MonoBehaviour
         }
 
         if (podeAndar)
-        { 
-
+        {
             animador.SetTrigger("andar");
 
             if (jogadorNaVisao)
@@ -52,10 +55,13 @@ public class Shieldbearer : MonoBehaviour
                 // Perseguir o jogador
                 Vector3 direcao = (Player.position - transform.position).normalized;
                 transform.Translate(direcao * velocidadePerseguicao * Time.deltaTime);
+
+                // Adicione a lógica de flip aqui também
+                FlipSprite(direcao.x);
             }
             else
             {
-                // Movimento padr�o
+                // Movimento padrão
                 MovimentoPadraoShieldbearer();
             }
         }
@@ -63,29 +69,31 @@ public class Shieldbearer : MonoBehaviour
 
     private void MovimentoPadraoShieldbearer()
     {
-        // Movimento padr�o ou movimento de ida e volta entre dois pontos
+        // Movimento padrão ou movimento de ida e volta entre dois pontos
         if (indoParaPontoDeVolta)
         {
-            // Move em dire��o ao ponto de volta
+            // Move em direção ao ponto de volta
             Vector3 direcaoVolta = (pontoDeVolta.position - transform.position).normalized;
             transform.Translate(direcaoVolta * velocidadePadrao * Time.deltaTime);
 
-            // Verifica se chegou ao ponto de volta
+            // Verifica se chegou ao ponto de volta e flipa se necessário
             if (Vector2.Distance(transform.position, pontoDeVolta.position) < 0.1f)
             {
                 indoParaPontoDeVolta = false;
+                FlipSprite(pontoDeIda.position.x - pontoDeVolta.position.x);
             }
         }
         else
         {
-            // Move em dire��o ao ponto de ida
+            // Move em direção ao ponto de ida
             Vector3 direcaoIda = (pontoDeIda.position - transform.position).normalized;
             transform.Translate(direcaoIda * velocidadePadrao * Time.deltaTime);
 
-            // Verifica se chegou ao ponto de ida
+            // Verifica se chegou ao ponto de ida e flipa se necessário
             if (Vector2.Distance(transform.position, pontoDeIda.position) < 0.1f)
             {
                 indoParaPontoDeVolta = true;
+                FlipSprite(pontoDeVolta.position.x - pontoDeIda.position.x);
             }
         }
     }
@@ -103,19 +111,32 @@ public class Shieldbearer : MonoBehaviour
                 }
                 else
                 {
-                    // Inicie a anima��o de dano
-                    
+                    // Inicie a animação de dano
+                    animador.SetTrigger("Dano");
+
                     // Impede o inimigo de andar temporariamente
                     StartCoroutine(PararAndarTemporariamente());
                 }
             }
             else
             {
-                // L�gica de empurr�o
+                // Lógica de empurrão
+                Vector2 direcaoEmpurrao = ((Vector2)Player.position - (Vector2)transform.position).normalized;
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                Vector2 direcaoEmpurrao = -(jogador.position - transform.position).normalized;
-                rb.AddForce(direcaoEmpurrao * empurraoForca, ForceMode2D.Impulse);
-                animador.SetTrigger("Dano");
+                rb.velocity = Vector2.zero; // Pare o movimento atual do inimigo
+
+                // Ajuste da posição alvo usando a Empty
+                Vector2 pontoAlvo = pontoDeEmpurrao.position;
+                Vector2 posicaoAtual = rb.position;
+
+                // Adicione uma força em direção à posição alvo
+                rb.AddForce((pontoAlvo - posicaoAtual).normalized * empurraoForca, ForceMode2D.Impulse);
+
+                // Inicie a animação de empurrão
+                animador.SetTrigger("Empurrao");
+
+                // Impede o inimigo de andar temporariamente
+                StartCoroutine(PararAndarTemporariamente());
             }
         }
     }
@@ -148,6 +169,16 @@ public class Shieldbearer : MonoBehaviour
 
             // Agende a destrui��o do objeto do inimigo ap�s um atraso.
             Invoke("DestruirInimigo", atrasoAntesDeDestruir);
+        }
+    }
+
+    private void FlipSprite(float directionX)
+    {
+        if ((directionX > 0 && transform.localScale.x < 0) || (directionX < 0 && transform.localScale.x > 0))
+        {
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
         }
     }
 

@@ -64,6 +64,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         // Defina a flag isTrigger como true
         isTrigger = true;
+        Debug.Log("O jogador está parando todas as ações devido à saúde baixa.");
 
         // Iniciar anima��o de morte
         playerAnimator.SetTrigger("Morte");
@@ -146,6 +147,21 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamageZombie(int amount)
+    {
+        if (!isCooldownActive)
+        {
+            Debug.Log("Player tomou dano Zombie! Damage: " + amount);
+            health -= amount;
+            Debug.Log("Player tomou dano Zombie! Player's health: " + health);
+
+            if (health <= 0)
+            {
+                PararTodasAcoes();
+            }
+        }
+    }
+
     public void ReceberDano(int amount)
     {
         TakeDamage(amount);
@@ -153,7 +169,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colis�o com: " + collision.gameObject.name);
+        Debug.Log("Colisão com: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -164,7 +180,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             }
             else
             {
-                Debug.LogWarning("O inimigo n�o implementa a interface IDamageable.");
+                
             }
             
         }

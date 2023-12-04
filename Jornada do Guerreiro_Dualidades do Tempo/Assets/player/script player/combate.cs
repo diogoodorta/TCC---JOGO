@@ -39,6 +39,15 @@ public class Combate : MonoBehaviour
                 }
             }
 
+            // Adicione uma verificação para o ZombieController
+            ZombieController zombie = enemy.GetComponent<ZombieController>();
+            if (zombie != null)
+            {
+                // Se o inimigo for o zumbi, aplique dano
+                zombie.TakeDamage(danoDeAtaque);
+                Debug.Log("Zumbi atingido: " + zombie.name);
+            }
+
             // Adicione uma verifica��o para evitar chamar m�todos em fantasmas diretamente
             GhostController ghost = enemy.GetComponent<GhostController>();
             if (ghost != null)
