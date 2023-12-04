@@ -19,17 +19,17 @@ public class ZombieController : MonoBehaviour
     {
         if (player != null && !isDead)
         {
-            // Lógica para detectar o jogador e seguir em sua direção.
+            // Lï¿½gica para detectar o jogador e seguir em sua direï¿½ï¿½o.
             Vector2 direction = (player.position - transform.position).normalized;
 
-            // Lógica para animação de caminhada.
+            // Lï¿½gica para animaï¿½ï¿½o de caminhada.
             animator.SetBool("isWalking", true);
             animator.SetBool("isAttacking", false);
 
-            // Atualiza a posição usando direction e speed.
+            // Atualiza a posiï¿½ï¿½o usando direction e speed.
             transform.Translate(direction * speed * Time.deltaTime);
 
-            // Rotação do zumbi para enfrentar o jogador.
+            // Rotaï¿½ï¿½o do zumbi para enfrentar o jogador.
             if (direction != Vector2.zero)
             {
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -48,8 +48,6 @@ public class ZombieController : MonoBehaviour
                 playerHealth.TakeDamage(1);
 
                 // Se o zumbi colidir com o jogador, inicia o ataque.
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isAttacking", true);
                 Attack();
             }
         }
@@ -57,24 +55,24 @@ public class ZombieController : MonoBehaviour
 
     private void Attack()
     {
-        // Lógica de ataque.
+        // Lï¿½gica de ataque.
         player.GetComponent<PlayerHealth>().ReceberDano(damage);
     }
 
     public void Die()
     {
-        // Lógica para a morte.
+        // Lï¿½gica para a morte.
         isDead = true;
-        animator.SetTrigger("Die");
+        animator.SetTrigger("morte");
 
-        // Desativa o GameObject após 5 segundos (ajuste conforme necessário).
+        // Desativa o GameObject apï¿½s 5 segundos (ajuste conforme necessï¿½rio).
         float delay = 5f;
         Invoke("DeactivateGameObject", delay);
     }
 
     private void DeactivateGameObject()
     {
-        // Desativa o GameObject, tornando-o invisível e inativo no jogo.
+        // Desativa o GameObject, tornando-o invisï¿½vel e inativo no jogo.
         gameObject.SetActive(false);
     }
 }

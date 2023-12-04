@@ -18,7 +18,9 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
     private float cooldownMorte = 2f;
     private float cooldownMorteTimer = 0f;
     private Transform jogador;
+
     private Animator animator;
+
     private bool podeMover = true;
 
     void Start()
@@ -47,6 +49,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
             {
                 Vector3 direcao = (jogador.position - transform.position).normalized;
                 transform.Translate(direcao * velocidadeMovimento * Time.deltaTime);
+                animator.SetTrigger("andando");
 
                 if (distanciaParaJogador <= alcanceDoAtaque)
                 {
@@ -86,7 +89,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         // Iniciar animação de morte (se houver um componente Animator)
         if (animator != null)
         {
-            animator.SetBool("Morto", true);
+            animator.SetTrigger("Morte");
         }
 
         // Desativar outros scripts (adicione esta linha se você tiver outros scripts)

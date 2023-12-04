@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77fea3efd38c6fa41a1a196f608d79fe
+guid: 289213f485d2d8343bb157ad6c172ebf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -110,70 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fantasma.morrendo__0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 879ae466162c47a4699efe4439bdad2e
-      internalID: -766401660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantasma.morrendo__1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0e98759684d8e7418f7fa208cbe1794
-      internalID: 2090954239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantasma.morrendo__2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e030b472e148ab4f9a5bbfb33a670dc
-      internalID: 635014898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantasma.morrendo__3
+      name: protagonista.walljump.direita_0
       rect:
         serializedVersion: 2
         x: 0
@@ -181,20 +118,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1308264cd4e859478f3eab12bd3941d
-      internalID: -2012686813
+      spriteID: 2d81f6ddd7eb1ec4a8303f613f0e9fb2
+      internalID: -1385642210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantasma.morrendo__4
+      name: protagonista.walljump.direita_1
       rect:
         serializedVersion: 2
         x: 64
@@ -202,65 +139,23 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02f67550a399cf94fb26b55513e59c8a
-      internalID: -1914829768
+      spriteID: 3b29954b39ba7414ca4f5b41fd22fd7e
+      internalID: -835177625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantasma.morrendo__5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39f698816fcfd1f4a8ecfa2498419e9c
-      internalID: -1460668590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantasma.morrendo__6
+      name: protagonista.walljump.direita_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a813412dc7dea6844a0eb623867302e2
-      internalID: 122951346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantasma.morrendo__7
-      rect:
-        serializedVersion: 2
-        x: 64
         y: 0
         width: 64
         height: 64
@@ -271,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54f5493d5f904cb44bc2c3b4d2567e04
-      internalID: 1779135165
+      spriteID: 965870f1bd08bd245aaddb51bc41267a
+      internalID: -1479491652
       vertices: []
       indices: 
       edges: []
@@ -288,14 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fantasma.morrendo__0: -766401660
-      fantasma.morrendo__1: 2090954239
-      fantasma.morrendo__2: 635014898
-      fantasma.morrendo__3: -2012686813
-      fantasma.morrendo__4: -1914829768
-      fantasma.morrendo__5: -1460668590
-      fantasma.morrendo__6: 122951346
-      fantasma.morrendo__7: -2138837112
+      protagonista.walljump.direita_0: -1385642210
+      protagonista.walljump.direita_1: -835177625
+      protagonista.walljump.direita_2: -1479491652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

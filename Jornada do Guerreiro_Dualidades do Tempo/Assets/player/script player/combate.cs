@@ -17,6 +17,7 @@ public class Combate : MonoBehaviour
         {
             Ataque();
         }
+        
     }
 
     void Ataque()

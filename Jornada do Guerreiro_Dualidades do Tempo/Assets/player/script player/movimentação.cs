@@ -11,7 +11,7 @@ public class movimentação : MonoBehaviour
     private bool isWallSliding;
     private bool isWallJumping;
     private bool isDashing = false;
-    private bool isInCooldown=false;
+    private bool isInCooldown=false; 
     private float dir;
     private float dir2;
     private int facingDir; 
@@ -69,21 +69,36 @@ public class movimentação : MonoBehaviour
         {
             //animar quando estiver Correndo
             animator2.SetBool("taAndando", true);
+            animator2.SetBool("parado", true);
         }
         else
         {
             //animar parado
             animator2.SetBool("taAndando", false);
+            animator2.SetBool("parado", true);
         }
 
         if (IsGrounded())
         {
             animator2.SetBool("taPulando", false);
+            animator2.SetBool("wall", false);
+            animator2.SetBool("no ar", false);
+            animator2.SetBool("ARtaque", false);
         }
         else
         {
             animator2.SetBool("taPulando", true);
+            animator2.SetBool("no ar", true);    
+            animator2.SetBool("taAndando", false);    
+              
         } 
+
+
+        if(isWallSliding)
+        {
+            animator2.SetBool("wall", true);
+            animator2.SetBool("no ar", false);       
+        }
 
     }
 
@@ -130,7 +145,7 @@ public class movimentação : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && OnGround())
         {
             body.velocity = Vector2.up * jumpforce;
-
+            animator2.SetBool("ARtaque", true);
         }
 
     }
@@ -150,6 +165,7 @@ public class movimentação : MonoBehaviour
         if (isWallSliding)
         {
             body.velocity = new Vector2(body.velocity.x, Mathf.Clamp(body.velocity.y, wallSlideSpeed, float.MaxValue));
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isWallSliding)
@@ -165,6 +181,7 @@ public class movimentação : MonoBehaviour
 
             isFacingRight = !isFacingRight;
             transform.Rotate(0,180,0);
+            
         }
     }
 
@@ -172,6 +189,7 @@ public class movimentação : MonoBehaviour
     {
         isDashing = true;
         isInCooldown = true;
+        animator2.SetBool("dashdow", true);
 
 
         if (facingDir == 1)
@@ -185,12 +203,14 @@ public class movimentação : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration); 
         isDashing = false;
-         
+        animator2.SetBool("dashdow", false);
+
+        
         
 
         yield return new WaitForSeconds(dashDuration);
         isInCooldown = false;
-        animator2.SetTrigger("parado");
+        
         
         
 
