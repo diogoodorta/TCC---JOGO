@@ -49,7 +49,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
             {
                 Vector3 direcao = (jogador.position - transform.position).normalized;
                 transform.Translate(direcao * velocidadeMovimento * Time.deltaTime);
-                animator.SetTrigger("andando");
+                animator.SetTrigger("andar");
 
                 if (distanciaParaJogador <= alcanceDoAtaque)
                 {
@@ -89,7 +89,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         // Iniciar animação de morte (se houver um componente Animator)
         if (animator != null)
         {
-            animator.SetTrigger("Morte");
+            animator.SetTrigger("morte");
         }
 
         // Desativar outros scripts (adicione esta linha se você tiver outros scripts)
@@ -116,7 +116,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
     {
         if (Time.time >= tempoUltimoAtaque + tempoEntreAtaques)
         {
-            animator.SetTrigger("Atacar");  // Inicie a animação aqui
+            animator.SetTrigger("ataque");  // Inicie a animação aqui
 
             Debug.Log("Ataque do SoldadoPossuído iniciado");
 
@@ -162,7 +162,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         {
             estaMorto = true;
             podeMover = false;
-            animator.SetBool("Morto", true);
+            animator.SetBool("morrer", true);
             cooldownMorteTimer = cooldownMorte;
             EncerrarAtividades();
         }

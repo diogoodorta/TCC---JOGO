@@ -40,9 +40,13 @@ public class Clerigo : MonoBehaviour
                 if (alvo != null)
                 {
                     // Defina o gatilho da animação para "LancandoProjétil"
-                    animator.SetTrigger("LancandoProjétil");
+                    animator.SetTrigger("lançar");
                     LancarProjétilDeCura();
                     cooldownTimer = cooldown;
+                }
+                else
+                {
+                  animator.SetTrigger("respirar");    
                 }
 
                 // Verifique se a animação de lançamento do projétil está em andamento
@@ -155,7 +159,7 @@ public class Clerigo : MonoBehaviour
         if (!estaMorto)
         {
             // Ative a animação de morte no Animator
-            animator.SetBool("Morte",true);
+            animator.SetTrigger("Morte");
             estaMorto = true;
 
             // Inicie o cooldown para destruir o objeto após a animação

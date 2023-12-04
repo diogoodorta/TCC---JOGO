@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8066921514508667131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "PontoEmpurr\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4394511222149865411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3, y: 0.30818176, z: -6.2185445}
+  m_LocalPosition: {x: 1.32, y: 0.28, z: -6.2185445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 4135365601153826519}
   - component: {fileID: 716150435568988693}
   - component: {fileID: 7097982640123674023}
-  m_Layer: 0
-  m_Name: Escudeiro
+  m_Layer: 7
+  m_Name: escudeiro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ Transform:
   m_Children:
   - {fileID: 8066921514508667131}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5344762961782142745
 SpriteRenderer:
@@ -238,7 +238,7 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4881684718011235093}
   m_Enabled: 1
-  m_SortingLayerID: -1087896455
-  m_SortingLayer: 3
+  m_SortingLayerID: -737872635
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_SortAtRoot: 0

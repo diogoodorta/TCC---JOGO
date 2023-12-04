@@ -133,7 +133,7 @@ public class Shieldbearer : MonoBehaviour
                 rb.AddForce((pontoAlvo - posicaoAtual).normalized * empurraoForca, ForceMode2D.Impulse);
 
                 // Inicie a animação de empurrão
-                animador.SetTrigger("Empurrao");
+                animador.SetTrigger("Dano");
 
                 // Impede o inimigo de andar temporariamente
                 StartCoroutine(PararAndarTemporariamente());
@@ -159,12 +159,9 @@ public class Shieldbearer : MonoBehaviour
                 collider.enabled = false;
             }
 
-            // Reproduza a anima��o de morte, se houver um Animator.
-            if (animador != null)
-            {
-                animador.SetTrigger("Morte");
-            }
-
+            // Reproduza a anima��o de morte, se houver um Animator
+            animador.SetTrigger("Morte");
+            
             derrotado = true;
 
             // Agende a destrui��o do objeto do inimigo ap�s um atraso.

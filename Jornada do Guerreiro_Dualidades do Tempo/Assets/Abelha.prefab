@@ -163,7 +163,7 @@ Transform:
   - {fileID: 8134535273323757970}
   - {fileID: 990582504799571421}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5822265509934790693
 SpriteRenderer:
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 1
-  player: {fileID: 0}
+  player: {fileID: 6675331794212798938}
   bulletPrefab: {fileID: 4907811903605391711, guid: fbab0aac20a16a043a4bcf56fbdc40eb, type: 3}
   pivot: {fileID: 7959564168127611993}
   agroRange: 20

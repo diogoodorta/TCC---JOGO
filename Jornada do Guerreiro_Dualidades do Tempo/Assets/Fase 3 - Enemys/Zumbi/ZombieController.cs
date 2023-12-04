@@ -44,8 +44,6 @@ public class ZombieController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         transform.Translate(direction * speed * Time.deltaTime);
-        animator.SetBool("isWalking", true);
-        animator.SetBool("isAttacking", false);
     }
 
     private void Flip(float directionX)
@@ -65,8 +63,6 @@ public class ZombieController : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isAttacking", true);
 
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
 
