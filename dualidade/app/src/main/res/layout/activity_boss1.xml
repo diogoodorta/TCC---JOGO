@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cenario1"
+    android:background="@drawable/boss1"
     tools:context=".boss1">
 
     <ScrollView

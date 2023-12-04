@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.354"
-        app:srcCompat="@drawable/fas1" />
+        app:srcCompat="@drawable/buttonfas1" />
 
     <ImageButton
         android:id="@+id/imageButton11"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.485"
-        app:srcCompat="@drawable/fas2" />
+        app:srcCompat="@drawable/buttonfas2" />
 
     <ImageButton
         android:id="@+id/imageButton12"
@@ -44,5 +44,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.618"
-        app:srcCompat="@drawable/fas3" />
+        app:srcCompat="@drawable/buttonfas3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,19 +21,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.397"
-        app:srcCompat="@drawable/b" />
+        app:srcCompat="@drawable/buttonfas" />
 
     <ImageButton
         android:id="@+id/BtnCredito"
         android:layout_width="145dp"
         android:layout_height="57dp"
         android:contentDescription="@string/Credito"
+        android:onClick="IrParaTelaCredito"
         android:text="@string/Credito"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.529"
-        app:srcCompat="@drawable/d" />
+        app:srcCompat="@drawable/buttoncredito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void IrParaTelaInimigo (View view){
-        Intent novatela = new Intent ( MainActivity.this, inimigos.class);
+    public void IrParaTelaCredito (View view){
+        Intent novatela = new Intent ( MainActivity.this, credito.class);
         startActivity(novatela);
 
         vibrar();
