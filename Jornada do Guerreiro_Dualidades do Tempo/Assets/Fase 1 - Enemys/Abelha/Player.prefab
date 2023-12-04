@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2759320057818089405}
   - component: {fileID: 4188549530226110517}
   - component: {fileID: 3607399279356456630}
-  m_Layer: 0
+  - component: {fileID: 8921934610493308335}
+  m_Layer: 9
   m_Name: efeito poeira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,6 +4887,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &8921934610493308335
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277322849914460004}
+  m_Enabled: 1
+  m_SortingLayerID: -737872635
+  m_SortingLayer: 2
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &1590429333490543974
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,7 +4908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3953760083292208458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ground check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,12 +4923,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590429333490543974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003, y: -1, z: 0.0017243829}
+  m_LocalPosition: {x: 0.003, y: -0.976, z: 0.0017243829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8872507865073221787}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2181811656806874565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6221358526365387990}
+  m_Layer: 0
+  m_Name: front check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6221358526365387990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181811656806874565}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0.29, z: 1810.1027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8872507865073221787}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2245296600534441974
 GameObject:
@@ -4928,7 +4972,7 @@ GameObject:
   - component: {fileID: 7774986297850120217}
   - component: {fileID: 9175598730097611468}
   - component: {fileID: 102040384267560546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: efeito tocar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9812,7 +9856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3801409280401402285}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ponto de ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9845,7 +9889,7 @@ GameObject:
   - component: {fileID: 8658971576654817654}
   - component: {fileID: 864701868215581834}
   - component: {fileID: 199405304080269840}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: efeito cair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14731,11 +14775,13 @@ GameObject:
   - component: {fileID: 8872507865073221787}
   - component: {fileID: 2323308117652768286}
   - component: {fileID: 7895549805357689103}
-  - component: {fileID: 8220618030379152648}
   - component: {fileID: 9135316467916775496}
   - component: {fileID: 8293031711887489600}
   - component: {fileID: 1013033691517886710}
-  m_Layer: 0
+  - component: {fileID: 7669065273455913967}
+  - component: {fileID: 6597576618170748977}
+  - component: {fileID: 1577447495666907555}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -14757,8 +14803,9 @@ Transform:
   - {fileID: 3953760083292208458}
   - {fileID: 3801409280401402285}
   - {fileID: 3706210436526666788}
+  - {fileID: 6221358526365387990}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2323308117652768286
 SpriteRenderer:
@@ -14839,41 +14886,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &8220618030379152648
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5484030005116580996}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!95 &9135316467916775496
 Animator:
   serializedVersion: 5
@@ -14912,7 +14924,7 @@ MonoBehaviour:
   PontoDeAtaque: {fileID: 3801409280401402285}
   enemyTag: Enemy
   ataqueRange: 0.63
-  danoDeAtaque: 40
+  danoDeAtaque: 2
 --- !u!96 &1013033691517886710
 TrailRenderer:
   serializedVersion: 3
@@ -15017,6 +15029,97 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7669065273455913967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484030005116580996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbbd24537bdb794282633ed645ff6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  maxHealth: 1000
+--- !u!114 &6597576618170748977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484030005116580996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29439923315890a45a54722cbbd50752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isControllable: 1
+  frontCheck: {fileID: 6221358526365387990}
+  speed: 8
+  wallSlideSpeed: 0
+  xWallForce: 10
+  yWallForce: 5
+  wallJumpTime: 0.2
+  jumpforce: 8
+  dashforce: 10
+  dashDuration: 0.65
+  dashCooldown: 3
+  animator2: {fileID: 9135316467916775496}
+  checkRadius: 0.8
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheck: {fileID: 3953760083292208458}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!61 &1577447495666907555
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484030005116580996}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.13047028, y: -0.023722172}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.88505554, y: 1.9525557}
+  m_EdgeRadius: 0
 --- !u!1 &5698274165201297100
 GameObject:
   m_ObjectHideFlags: 0
@@ -15027,7 +15130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3706210436526666788}
   - component: {fileID: 2145007060197398321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: particulas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

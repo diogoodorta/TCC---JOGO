@@ -10,8 +10,9 @@ public class VaganteController : MonoBehaviour
 
     private int currentHealth;
     private Transform player;
-    private Animator animator;
     private bool isDead = false;
+
+    private Animator animator;
 
     public Transform knifeSpawnPoint;
     public GameObject knifePrefab;
@@ -65,20 +66,18 @@ public class VaganteController : MonoBehaviour
             pointB.position = new Vector2(pointA.position.x, pointB.position.y);
         }
 
-        animator.SetBool("isWalking", true);
+        animator.SetTrigger("andando");
     }
 
     private void StopMovingAndThrow()
     {
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isThrowing", true);
         transform.LookAt(player.position);
     }
 
     private void ThrowKnife()
     {
         Instantiate(knifePrefab, knifeSpawnPoint.position, knifeSpawnPoint.rotation);
-        animator.SetTrigger("ThrowKnife");
+        animator.SetTrigger("ataque");
     }
 
     public void TakeDamage(int damage)
@@ -97,7 +96,7 @@ public class VaganteController : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        animator.SetTrigger("Die");
+        animator.SetTrigger("morte");
         Invoke("DestroyGameObject", 5f);
     }
 

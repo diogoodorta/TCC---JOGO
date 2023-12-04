@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5454064955276608719}
   - component: {fileID: 8090415850701723981}
   - component: {fileID: 6075107835017667277}
+  - component: {fileID: 7025760748232073878}
+  - component: {fileID: 4056491875862466133}
   m_Layer: 0
   m_Name: zumbi
   m_TagString: Untagged
@@ -33,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &868876123697781216
 SpriteRenderer:
@@ -73,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -737872635
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 826759623, guid: 5e2ff6c41944e784aa71b90e6d03145c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,3 +172,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0.29907036, y: -0.24299407}
   m_Size: {x: 0.934536, y: 3.0654082}
   m_Direction: 0
+--- !u!114 &7025760748232073878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084058986163731632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3a01d4648e3cf40bebab3ca4fc7daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+--- !u!114 &4056491875862466133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084058986163731632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60b2c3746137924fa8c37fcd1bd3d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  damage: 10

@@ -59,15 +59,15 @@ public class GhostController : MonoBehaviour, IDamageable
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageOnCollision);
-                Debug.Log("Fantasma causou dano ao jogador durante a colisão.");
+                Debug.Log("Fantasma causou dano ao jogador durante a colisï¿½o.");
             }
         }
     }
 
     void EncerrarAcoes()
     {
-        // Adicione qualquer lógica adicional para encerrar as ações do fantasma aqui.
-        Debug.Log("Fantasma: Ações encerradas após receber dano do jogador.");
+        // Adicione qualquer lï¿½gica adicional para encerrar as aï¿½ï¿½es do fantasma aqui.
+        Debug.Log("Fantasma: Aï¿½ï¿½es encerradas apï¿½s receber dano do jogador.");
     }
 
     System.Collections.IEnumerator DestroyAfterCooldown()
@@ -75,9 +75,9 @@ public class GhostController : MonoBehaviour, IDamageable
         isCooldown = true;
         yield return new WaitForSeconds(deathCooldown);
 
-        // Destruir o GameObject após o cooldown.
+        // Destruir o GameObject apï¿½s o cooldown.
         Destroy(gameObject);
-        Debug.Log("Fantasma: GameObject destruído após cooldown de morte.");
+        Debug.Log("Fantasma: GameObject destruï¿½do apï¿½s cooldown de morte.");
     }
 
     public void TakeDamage(int amount)
@@ -88,7 +88,10 @@ public class GhostController : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            // Encerra as ações após receber dano.
+
+            animator.SetTrigger("morte");
+
+            // Encerra as aï¿½ï¿½es apï¿½s receber dano.
             EncerrarAcoes();
 
             // Inicia o cooldown de morte.
