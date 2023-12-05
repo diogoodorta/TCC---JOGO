@@ -19,13 +19,19 @@ public class Morte : MonoBehaviour
 
     private int currentHealth;
     private bool isDead = false;
+
     private Animator animator;
+    private bool ataque;
+    private bool voando;
+
     private Transform playerTransform;
     private int health;
     private bool bolaDaMorteDisponivel = true;
     private bool lancarFantasmaDisponivel = true;
     public Transform pontoDeOrigemBolaDaMorte;
     public Transform pontoDeOrigemLancarFantasma;
+
+
 
     void Start()
     {
@@ -34,7 +40,7 @@ public class Morte : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-        // Inicia a rotina de movimentação
+        // Inicia a rotina de movimentaï¿½ï¿½o
         StartCoroutine(MovimentarEntrePontos());
 
         // Inicia os loops de ataques
@@ -55,8 +61,10 @@ public class Morte : MonoBehaviour
 
     IEnumerator MovimentarParaPonto(Transform destino)
     {
+        
         while (Vector2.Distance(transform.position, destino.position) > 0.1f)
-        {
+        {   
+            
             transform.position = Vector2.MoveTowards(transform.position, destino.position, velocidadeMovimento * Time.deltaTime);
             yield return null;
         }
@@ -66,7 +74,7 @@ public class Morte : MonoBehaviour
     {
         GameObject instanciado = Instantiate(prefab, position, Quaternion.identity);
 
-        // Se necessário, faça algo com o objeto instanciado
+        // Se necessï¿½rio, faï¿½a algo com o objeto instanciado
     }
 
     IEnumerator LoopAtaque(float tempoRecarga, System.Action ataque, bool disponivelFlag)
@@ -92,24 +100,24 @@ public class Morte : MonoBehaviour
 
     void LancarFantasma()
     {
-        Debug.Log("Lançar Fantasma chamado");
+        Debug.Log("Lanï¿½ar Fantasma chamado");
         InstantiatePrefab(prefabFantasma, pontoDeOrigemLancarFantasma.position);
     }
 
     void PararTodasAcoes()
     {
-        Debug.Log("O inimigo está parando todas as ações devido à saúde baixa.");
-        animator.SetTrigger("Morte");
+        Debug.Log("O inimigo estï¿½ parando todas as aï¿½ï¿½es devido ï¿½ saï¿½de baixa.");
+        animator.SetTrigger("morte");
 
-        // Agora, você pode destruir o GameObject após um pequeno atraso (por exemplo, 2 segundos)
-        StartCoroutine(DestruirAposDelay(2f));
+        // Agora, vocï¿½ pode destruir o GameObject apï¿½s um pequeno atraso (por exemplo, 2 segundos)
+        StartCoroutine(DestruirAposDelay(6f));
     }
 
     IEnumerator DestruirAposDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        // Destruir o GameObject após o atraso
+        // Destruir o GameObject apï¿½s o atraso
         Destroy(gameObject);
     }
 
