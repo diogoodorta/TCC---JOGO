@@ -39,6 +39,20 @@ public class Combate : MonoBehaviour
                 }
             }
 
+            
+            if (enemy.CompareTag(enemyTag))
+            {
+               // Adicione verificações para diferentes tipos de inimigos aqui
+
+               // Morte
+               Morte morte = enemy.GetComponent<Morte>();
+               if (morte != null)
+               {
+                   morte.TakeDamage(danoDeAtaque);
+                   Debug.Log("Morte atingida: " + morte.name);
+               }
+            }
+            
             // Adicione uma verificação para o ZombieController
             ZombieController zombie = enemy.GetComponent<ZombieController>();
             if (zombie != null)

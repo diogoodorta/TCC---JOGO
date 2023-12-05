@@ -13,6 +13,10 @@ public class GhostController : MonoBehaviour
     private bool isCooldown = false;
     private bool isFacingLeft = false;
 
+    public void SetAlvo(Transform alvo)
+    {
+        // Lógica para configurar o alvo do fantasma
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

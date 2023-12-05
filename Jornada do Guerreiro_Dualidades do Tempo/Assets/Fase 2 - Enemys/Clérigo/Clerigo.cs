@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Clérigo : MonoBehaviour, IDamageable
+public class Clérigo : MonoBehaviour
 {
     public float vidaMaxima = 20;
     public float vida = 10;

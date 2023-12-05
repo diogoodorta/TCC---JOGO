@@ -100,12 +100,32 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamageBola(int amount)
+    {
+        if (!isCooldownActive)
+        {
+            health -= amount;
+            Debug.Log("Player foi atingido pela BolaDaMorte! Dano: " + amount + " | Vida restante: " + health);
+
+            if (health <= 0)
+            {
+                Debug.Log("Player sem vida. Executando ações de morte.");
+                PararTodasAcoes();
+            }
+        }
+        else
+        {
+            Debug.Log("Cooldown ativo. O jogador não recebe dano.");
+        }
+    }
+
+
     public void TakeDamageKick(int amount)
     {
         if (!isCooldownActive)
         {
             health -= amount;
-            Debug.Log("Jogador atingido pelo Kick! Vida do jogador: " + health);
+            Debug.Log("Player taking kick damage: " + amount);
 
             if (health <= 0)
             {
@@ -182,5 +202,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
                 // Lógica para lidar com a colisão, se necessário
             }
         }
+
     }
 }
