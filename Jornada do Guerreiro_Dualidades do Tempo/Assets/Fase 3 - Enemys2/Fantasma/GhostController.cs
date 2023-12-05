@@ -4,7 +4,7 @@ public class GhostController : MonoBehaviour
 {
     public int maxHealth = 3;
     public float flyingSpeed = 5f;
-    public float deathCooldown = 4f;
+    public float deathCooldown = 2f;
     public int damageOnCollision = 1;
 
     private int currentHealth;

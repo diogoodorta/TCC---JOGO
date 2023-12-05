@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Combate : MonoBehaviour
 {
@@ -52,7 +53,23 @@ public class Combate : MonoBehaviour
                    Debug.Log("Morte atingida: " + morte.name);
                }
             }
-            
+
+            if (enemy.CompareTag("Clérigo")) // Certifique-se de usar a tag correta do Clérigo
+            {
+                Clérigo clérigo = enemy.GetComponent<Clérigo>();
+                if (clérigo != null)
+                {
+                    clérigo.TakeDamage(danoDeAtaque);
+
+                    if (clérigo.vida <= 0)
+                    {
+                        // O Clérigo morreu, você pode adicionar lógica adicional aqui se necessário
+                        Debug.Log("Clérigo morreu!");
+                 
+                    }
+                }
+            }
+
             // Adicione uma verificação para o ZombieController
             ZombieController zombie = enemy.GetComponent<ZombieController>();
             if (zombie != null)

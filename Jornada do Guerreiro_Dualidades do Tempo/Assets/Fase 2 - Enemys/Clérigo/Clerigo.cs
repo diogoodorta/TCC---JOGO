@@ -184,7 +184,7 @@ public class Clérigo : MonoBehaviour
         // Adicione outras lógicas relacionadas à cura, se necessário.
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (!estaMorto)
         {

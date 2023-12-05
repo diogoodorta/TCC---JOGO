@@ -1241,8 +1241,20 @@ PrefabInstance:
       value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: health
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
       propertyPath: agroRange
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: distanceToGround
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67236,8 +67248,16 @@ PrefabInstance:
       value: Abelha (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
       propertyPath: agroRange
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: distanceToGround
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74190,8 +74210,16 @@ PrefabInstance:
       value: Abelha (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
       propertyPath: agroRange
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: distanceToGround
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -124726,8 +124754,16 @@ PrefabInstance:
       value: Abelha (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
       propertyPath: agroRange
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954813801960049445, guid: 5ae4c7e6e6e852249ae90ccfb048044f, type: 3}
+      propertyPath: distanceToGround
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
