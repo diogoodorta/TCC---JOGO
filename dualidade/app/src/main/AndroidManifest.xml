@@ -15,6 +15,12 @@
         android:theme="@style/Base.Theme.Dualidades"
         tools:targetApi="31">
         <activity
+            android:name=".credito"
+            android:exported="false" />
+        <activity
+            android:name=".Credito"
+            android:exported="false" />
+        <activity
             android:name=".boss3"
             android:exported="false" />
         <activity
