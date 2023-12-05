@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Abelha : MonoBehaviour, IDamageable
+public class Abelha : MonoBehaviour
 {
     public int side = 1;
     public GameObject player;

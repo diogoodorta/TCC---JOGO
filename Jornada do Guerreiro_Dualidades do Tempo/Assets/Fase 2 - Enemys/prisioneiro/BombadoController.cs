@@ -8,17 +8,20 @@ public class BombadoController : MonoBehaviour
     public float kickCooldown = 3f;
     public float detectionRange = 5f;
     public float kickRange = 1.5f;
+    public float attackDamage = 5f;
+    public float attackCooldown = 2f;
 
     private int currentHealth;
     private bool isDead = false;
     private Animator animator;
     private Rigidbody2D rb;
     private bool canKick = true;
+    private bool canAttack = true;
     private Transform player;
     private Collider2D bombadoCollider;
-   
-
-    public Transform kickPoint;
+    public Transform attackPoint;
+    public LayerMask enemyLayer;
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
@@ -31,6 +34,13 @@ public class BombadoController : MonoBehaviour
         bombadoCollider.isTrigger = false; // ou true, dependendo da sua necessidade
         rb.isKinematic = false; // ou true, dependendo da sua necessidade
 
+        // Encontrar o componente PlayerHealth no cenário
+        playerHealth = FindObjectOfType<PlayerHealth>();
+
+        if (playerHealth == null)
+        {
+            Debug.LogWarning("O jogador não possui o script PlayerHealth.");
+        }
     }
 
     private void Update()
@@ -48,6 +58,16 @@ public class BombadoController : MonoBehaviour
                 if (distanceToPlayer < kickRange)
                 {
                     Kick();
+                }
+            }
+
+            if (CanAttack() && distanceToPlayer < detectionRange)
+            {
+                StartCoroutine(AttackCooldown());
+
+                if (distanceToPlayer < detectionRange)
+                {
+                    Attack();
                 }
             }
 
@@ -83,9 +103,6 @@ public class BombadoController : MonoBehaviour
     {
         animator.SetTrigger("Kick");
 
-        // Encontrar o componente PlayerHealth no cenário
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-
         if (playerHealth != null)
         {
             playerHealth.TakeDamageKick(2);
@@ -103,6 +120,46 @@ public class BombadoController : MonoBehaviour
         yield return new WaitForSeconds(kickCooldown);
 
         canKick = true;
+    }
+
+    private bool CanAttack()
+    {
+        return canAttack;
+    }
+
+    private void Attack()
+    {
+        animator.SetTrigger("Attack");
+
+        // Detectar o jogador na área de ataque
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position, detectionRange, LayerMask.GetMask("Player"));
+
+        // Aplicar dano ao jogador encontrado
+        foreach (Collider2D playerCollider in hitPlayers)
+        {
+            if (playerCollider.CompareTag("Player"))
+            {
+                PlayerHealth playerHealth = playerCollider.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamageKick(2);
+                    Debug.Log("Dano causado ao jogador");
+                }
+                else
+                {
+                    Debug.LogWarning("O componente PlayerHealth não foi encontrado no jogador.");
+                }
+            }
+        }
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
     }
 
     public void TakeDamage(int amount)

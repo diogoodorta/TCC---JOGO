@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GhostController : MonoBehaviour, IDamageable
+public class GhostController : MonoBehaviour
 {
     public int maxHealth = 3;
     public float flyingSpeed = 5f;
