@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tatuzinho : MonoBehaviour, IDamageable
+public class Tatuzinho : MonoBehaviour
 {
     public Transform DetectaChao;
     public float distancia = 3;

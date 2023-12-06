@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Combate : MonoBehaviour
 {
@@ -36,6 +37,36 @@ public class Combate : MonoBehaviour
                 {
                     abelha.TakeDamage(danoDeAtaque);
                     Debug.Log("Abelha atingida: " + abelha.name);
+                }
+            }
+
+            
+            if (enemy.CompareTag(enemyTag))
+            {
+               // Adicione verificações para diferentes tipos de inimigos aqui
+
+               // Morte
+               Morte morte = enemy.GetComponent<Morte>();
+               if (morte != null)
+               {
+                   morte.TakeDamage(danoDeAtaque);
+                   Debug.Log("Morte atingida: " + morte.name);
+               }
+            }
+
+            if (enemy.CompareTag("Clérigo")) // Certifique-se de usar a tag correta do Clérigo
+            {
+                Clérigo clérigo = enemy.GetComponent<Clérigo>();
+                if (clérigo != null)
+                {
+                    clérigo.TakeDamage(danoDeAtaque);
+
+                    if (clérigo.vida <= 0)
+                    {
+                        // O Clérigo morreu, você pode adicionar lógica adicional aqui se necessário
+                        Debug.Log("Clérigo morreu!");
+                 
+                    }
                 }
             }
 

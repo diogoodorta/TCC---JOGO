@@ -1,10 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldadoPossuido : MonoBehaviour, IDamageable
+public class SoldadoPossuido : MonoBehaviour
 {
-    public float vida = 20;
+
+    public float vidaMaxima = 10;
+    public float vida = 10;
     public int danoDaEspada = 1;
     public float velocidadeMovimento = 5.0f;
     public float alcanceDeDetecção = 10.0f;
@@ -20,22 +21,30 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
     private Transform jogador;
 
     private Animator animator;
-
     private bool podeMover = true;
+    private Transform alvo;
+
+    private SoldadoPossuido Soldade;
 
     void Start()
     {
         jogador = GameObject.FindWithTag("Player")?.transform;
 
+        // Adicione as seguintes linhas para encontrar o componente Aliado
+        GameObject aliadoObject = GameObject.FindWithTag("Enemy");
+        if (aliadoObject != null)
+        {
+            Soldade = aliadoObject.GetComponent<SoldadoPossuido>();
+        }
+
         if (jogador != null)
         {
             animator = GetComponent<Animator>();
-            jogadorLayer = LayerMask.GetMask("Player"); // Defina o LayerMask aqui
+            jogadorLayer = LayerMask.GetMask("Player");
         }
         else
         {
             Debug.LogError("O jogador não foi encontrado. Verifique se ele tem a tag correta.");
-            // Lide com a situação de o jogador não ser encontrado, se necessário.
         }
     }
 
@@ -48,8 +57,15 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
             if (distanciaParaJogador <= alcanceDeDetecção)
             {
                 Vector3 direcao = (jogador.position - transform.position).normalized;
+
+                // Atualiza a escala para virar o inimigo na direção do jogador
+                if (direcao.x > 0)
+                    transform.localScale = new Vector3(1, 1, 1); // Virado para a direita
+                else if (direcao.x < 0)
+                    transform.localScale = new Vector3(-1, 1, 1); // Virado para a esquerda
+
                 transform.Translate(direcao * velocidadeMovimento * Time.deltaTime);
-                animator.SetTrigger("andar");
+                animator.SetTrigger("andando");
 
                 if (distanciaParaJogador <= alcanceDoAtaque)
                 {
@@ -87,10 +103,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         }
 
         // Iniciar animação de morte (se houver um componente Animator)
-        if (animator != null)
-        {
-            animator.SetTrigger("morte");
-        }
+        animator.SetTrigger("morte");
 
         // Desativar outros scripts (adicione esta linha se você tiver outros scripts)
         // Exemplo: Componente de movimento
@@ -101,14 +114,30 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         // }
 
         // Iniciar a rotina de cooldown
-        StartCoroutine(IniciarCooldown());
+        StartCoroutine(IniciarCooldownMorte());
     }
 
-    IEnumerator IniciarCooldown()
-    {
-        yield return new WaitForSeconds(4f); // Tempo de cooldown
 
-        // Autodestruir o GameObject
+    private void VerificarVida()
+    {
+        if (vida <= 0 && !estaMorto)
+        {
+            estaMorto = true;
+            podeMover = false;
+            animator.SetBool("Morte", true);
+
+            // Iniciar a rotina de cooldown para destruição após a animação de morte
+            StartCoroutine(IniciarCooldownMorteCoroutine());
+        }
+    }
+
+
+    IEnumerator IniciarCooldownMorteCoroutine()
+    {
+        // Aguarde o término da animação de morte antes de iniciar o cooldown
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Autodestruir o GameObject após a animação de morte
         Destroy(gameObject);
     }
 
@@ -116,9 +145,7 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
     {
         if (Time.time >= tempoUltimoAtaque + tempoEntreAtaques)
         {
-            animator.SetTrigger("ataque");  // Inicie a animação aqui
-
-            Debug.Log("Ataque do SoldadoPossuído iniciado");
+            animator.SetTrigger("Atacar");
 
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(espadaTransform.position, alcanceDoAtaque, jogadorLayer);
 
@@ -136,6 +163,20 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
                     else
                     {
                         Debug.LogWarning("O componente Playerhealth não foi encontrado no jogador.");
+                    }
+                }
+                else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    SoldadoPossuido soldado = collider.GetComponent<SoldadoPossuido>();
+                    if (soldado != null && soldado.vida < 10)
+                    {
+                        alvo = soldado.transform;
+                        Debug.Log("Clérigo detectou SoldadoPossuído em perigo!");
+                        Debug.Log("Vida do SoldadoPossuído: " + soldado.vida);
+
+                        // Cura o SoldadoPossuído
+                        Soldade.ReceberCura(4); // Ajuste a quantidade de cura conforme necessário
+                        break;
                     }
                 }
             }
@@ -156,15 +197,20 @@ public class SoldadoPossuido : MonoBehaviour, IDamageable
         VerificarVida();
     }
 
-    private void VerificarVida()
+    public void ReceberCura(float quantidadeDeCura)
     {
-        if (vida <= 0 && !estaMorto)
-        {
-            estaMorto = true;
-            podeMover = false;
-            animator.SetBool("morrer", true);
-            cooldownMorteTimer = cooldownMorte;
-            EncerrarAtividades();
-        }
+        vida = Mathf.Min(vida + quantidadeDeCura, vidaMaxima); // Garante que a vida não ultrapasse o máximo
+        // Adicione outras lógicas relacionadas à cura, se necessário.
     }
+
+    IEnumerator IniciarCooldownMorte()
+    {
+        // Aguarde o término da animação de morte antes de iniciar o cooldown
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Autodestruir o GameObject após a animação de morte
+        Destroy(gameObject);
+    }
+
+
 }

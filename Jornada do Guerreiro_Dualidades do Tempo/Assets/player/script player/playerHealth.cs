@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private bool isCooldownActive = false;
     private bool isTrigger = false; // Flag para indicar o estado Is Trigger
 
-    // Adicione refer�ncias aos scripts de movimento e combate, se necess�rio
+    // Adicione referências aos scripts de movimento e combate, se necessário
     private movimentação playerMoveScript;
     private Combate playerCombatScript;
     private Animator playerAnimator;
@@ -25,14 +25,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (health <= 0 && !isTrigger)
         {
-            // Se a vida chegar a zero e n�o estivermos no estado Is Trigger, execute a��es de desligamento
+            // Se a vida chegar a zero e não estivermos no estado Is Trigger, execute ações de desligamento
             PararTodasAcoes();
         }
     }
 
     void PararTodasAcoes()
     {
-
         // Desativar controles de movimento
         if (playerMoveScript != null)
         {
@@ -47,14 +46,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             playerCombatScript.enabled = false;
         }
 
-        // Desligar colis�es
+        // Desligar colisões
         Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
             collider.enabled = false;
         }
 
-        // Congelar a posi��o
+        // Congelar a posição
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -66,7 +65,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         isTrigger = true;
         Debug.Log("O jogador está parando todas as ações devido à saúde baixa.");
 
-        // Iniciar anima��o de morte
+        // Iniciar animação de morte
         playerAnimator.SetTrigger("Morte");
 
         StartCoroutine(StartCooldown());
@@ -83,7 +82,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         isCooldownActive = false;
 
-        // Destruir o jogador ap�s o cooldown
+        // Destruir o jogador após o cooldown
         Destroy(gameObject);
     }
 
@@ -92,7 +91,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (!isCooldownActive)
         {
             health -= amount;
-            Debug.Log("Vida do jogador: " + health);
+            Debug.Log("Player foi atingido! Dano: " + amount);
 
             if (health <= 0)
             {
@@ -101,12 +100,32 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeDamageBola(int amount)
+    {
+        if (!isCooldownActive)
+        {
+            health -= amount;
+            Debug.Log("Player foi atingido pela BolaDaMorte! Dano: " + amount + " | Vida restante: " + health);
+
+            if (health <= 0)
+            {
+                Debug.Log("Player sem vida. Executando ações de morte.");
+                PararTodasAcoes();
+            }
+        }
+        else
+        {
+            Debug.Log("Cooldown ativo. O jogador não recebe dano.");
+        }
+    }
+
+
     public void TakeDamageKick(int amount)
     {
         if (!isCooldownActive)
         {
             health -= amount;
-            Debug.Log("Jogador atingido pelo Kick! Vida do jogador: " + health);
+            Debug.Log("Player taking kick damage: " + amount);
 
             if (health <= 0)
             {
@@ -125,7 +144,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
             if (health <= 0)
             {
-                Debug.Log("Player sem vida. Executando a��es de morte.");
+                Debug.Log("Player sem vida. Executando ações de morte.");
                 PararTodasAcoes();
             }
         }
@@ -133,7 +152,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamageEspada(int amount)
     {
-        // Verifique se o cooldown n�o est� ativo antes de aplicar o dano
+        // Verifique se o cooldown não está ativo antes de aplicar o dano
         if (!isCooldownActive)
         {
             health -= amount;
@@ -173,17 +192,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(1);
             }
             else
             {
-                
+                // Lógica para lidar com a colisão, se necessário
             }
-            
         }
-    }
 
+    }
 }

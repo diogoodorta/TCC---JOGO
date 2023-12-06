@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
-public class Clerigo : MonoBehaviour
+public class Clérigo : MonoBehaviour
 {
-    public float vida = 22;
-    public float cura = 10;
+    public float vidaMaxima = 20;
+    public float vida = 10;
+    public float cura = 2;
     public float dano = 1;
     public PlayerHealth playerHealth;
     public float tempoParaDestruir = 3.0f;
@@ -13,13 +15,13 @@ public class Clerigo : MonoBehaviour
     public GameObject projétilDeCuraPrefab;
 
     private Animator animator;
-
-
     private bool estaMorto = false;
     private bool lancandoProjétil = false;
     private float cooldownTimer = 1f;
-    private float cooldownMorte = 2f;  // Cooldown para destruir o objeto após a animação de morte
+    private float cooldownMorte = 2f;
     private float cooldownMorteTimer = 0f;
+    public float cooldownDestruição = 2.0f; // Tempo de cooldown após a animação de morte
+    private bool destruiçãoAgendada = false;
 
 
     void Start()
@@ -29,7 +31,7 @@ public class Clerigo : MonoBehaviour
 
     void Update()
     {
-        if (!estaMorto) // Verifique se o Clérigo não está morto
+        if (!estaMorto)
         {
             cooldownTimer -= Time.deltaTime;
 
@@ -39,17 +41,15 @@ public class Clerigo : MonoBehaviour
 
                 if (alvo != null)
                 {
-                    // Defina o gatilho da animação para "LancandoProjétil"
                     animator.SetTrigger("lançar");
                     LancarProjétilDeCura();
                     cooldownTimer = cooldown;
                 }
                 else
                 {
-                  animator.SetTrigger("respirar");    
+                    animator.SetTrigger("respirar");
                 }
 
-                // Verifique se a animação de lançamento do projétil está em andamento
                 if (lancandoProjétil && !animator.GetCurrentAnimatorStateInfo(0).IsName("LancandoProjétil"))
                 {
                     lancandoProjétil = false;
@@ -62,7 +62,7 @@ public class Clerigo : MonoBehaviour
 
                 if (tempoParaDestruir <= 0)
                 {
-                    Morrer(); // Inicie a animação de morte
+                    Morrer();
                 }
             }
         }
@@ -70,29 +70,27 @@ public class Clerigo : MonoBehaviour
 
     void DestruirGameObject()
     {
-        // Destrua o GameObject
         Destroy(gameObject);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        Debug.Log("Colisão com: " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(1);
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(1);
+            }
         }
     }
 
-
-    // Método chamado quando a animação de lançamento do projétil termina
     public void TerminarLancamentoDeProjétil()
     {
-        // Posso colocar:
-        // A lógica após a animação de lançamento do projétil
-        // Por exemplo, criar o projétil aqui, se necessário
+        // Lógica após a animação de lançamento do projétil, se necessário
     }
-
-
 
     private Transform alvo;
 
@@ -104,34 +102,41 @@ public class Clerigo : MonoBehaviour
         {
             if (collider.gameObject.layer == LayerMask.NameToLayer("Ally"))
             {
-                Aliado aliado = collider.GetComponent<Aliado>();
-                if (aliado != null && aliado.vida < 20)
+                SoldadoPossuido soldade = collider.GetComponent<SoldadoPossuido>();
+                if (soldade != null && soldade.vida < soldade.vidaMaxima)
                 {
-                    alvo = aliado.transform;
+                    alvo = soldade.transform;
                     Debug.Log("Clérigo detectou aliado em perigo!");
-                    Debug.Log("Vida do aliado: " + aliado.vida);
+                    Debug.Log("Vida do aliado: " + soldade.vida);
+                    break;
+                }
+            }
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                SoldadoPossuido soldado = collider.GetComponent<SoldadoPossuido>();
+                if (soldado != null && soldado.vida < 10)
+                {
+                    alvo = soldado.transform;
+                    Debug.Log("Clérigo detectou SoldadoPossuído em perigo!");
+                    Debug.Log("Vida do SoldadoPossuído: " + soldado.vida);
                     break;
                 }
             }
         }
     }
 
-
     void LancarProjétilDeCura()
     {
         Vector3 direcao = alvo.position - transform.position;
         direcao.Normalize();
 
-        // Cria um projétil de cura
         GameObject projétil = Instantiate(projétilDeCuraPrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = projétil.GetComponent<Rigidbody2D>();
         rb.velocity = direcao * projétilVelocidade;
         Debug.Log("Clérigo lançou um projétil de cura!");
 
-        Invoke("TerminarCura", 2f);  // Termina o processo de cura após 2 segundos
+        Invoke("TerminarCura", 2f);
     }
-
-
 
     void TerminarCura()
     {
@@ -146,31 +151,74 @@ public class Clerigo : MonoBehaviour
             PlayerHealth player = other.GetComponent<PlayerHealth>();
             if (player != null)
             {
-                int danoInt = Mathf.RoundToInt(dano); // Converte dano de float para int
-                player.ReceberDano(danoInt); // Passa o dano como int
+                int danoInt = Mathf.RoundToInt(dano);
+                player.ReceberDano(danoInt);
                 Debug.Log("Clérigo causou dano ao jogador!");
+            }
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            // Adicione uma verificação de tipo aqui
+            if (other.TryGetComponent<SoldadoPossuido>(out SoldadoPossuido soldade))
+            {
+                if (soldade.vida < soldade.vidaMaxima)  // Adicionei esta condição para curar apenas se a vida estiver abaixo da vida máxima
+                {
+                    soldade.ReceberCura(cura);
+                    Debug.Log("Clérigo curou um Aliado!");
+                }
+            }
+            else if (other.TryGetComponent<SoldadoPossuido>(out SoldadoPossuido soldado))
+            {
+                if (soldado.vida < soldado.vidaMaxima)  // Adicionei esta condição para curar apenas se a vida estiver abaixo da vida máxima
+                {
+                    soldado.ReceberCura(cura);
+                    Debug.Log("Clérigo curou um Soldado!");
+                }
             }
         }
     }
 
+    public void ReceberCura(float quantidadeDeCura)
+    {
+        vida = Mathf.Min(vida + quantidadeDeCura, vidaMaxima); // Garante que a vida não ultrapasse o máximo
+        // Adicione outras lógicas relacionadas à cura, se necessário.
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (!estaMorto)
+        {
+            vida -= amount;
+            Debug.Log("Clérigo foi atingido! Dano: " + amount);
+
+            if (vida <= 0)
+            {
+                Morrer();
+            }
+        }
+    }
 
     void Morrer()
     {
         if (!estaMorto)
         {
-            // Ative a animação de morte no Animator
             animator.SetTrigger("Morte");
             estaMorto = true;
-
-            // Inicie o cooldown para destruir o objeto após a animação
             cooldownMorteTimer = cooldownMorte;
+            Debug.Log("O Clérigo morreu!");
 
-            // Execute qualquer lógica adicional relacionada à morte do Clérigo
-            Debug.Log("O Clérigo morreu!"); // Exemplo de mensagem de depuração
-
-            
+            if (!destruiçãoAgendada)
+            {
+                StartCoroutine(ExecutarCooldownDestruição());
+                destruiçãoAgendada = true;
+            }
         }
     }
+
+    IEnumerator ExecutarCooldownDestruição()
+    {
+        yield return new WaitForSeconds(cooldownDestruição);
+
+        DestruirGameObject();
+    }
 }
-
-

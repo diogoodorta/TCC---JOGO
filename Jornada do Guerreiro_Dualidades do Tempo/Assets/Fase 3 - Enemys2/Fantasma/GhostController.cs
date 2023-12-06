@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class GhostController : MonoBehaviour, IDamageable
+public class GhostController : MonoBehaviour
 {
     public int maxHealth = 3;
     public float flyingSpeed = 5f;
-    public float deathCooldown = 4f;
+    public float deathCooldown = 2f;
     public int damageOnCollision = 1;
 
     private int currentHealth;
@@ -13,6 +13,10 @@ public class GhostController : MonoBehaviour, IDamageable
     private bool isCooldown = false;
     private bool isFacingLeft = false;
 
+    public void SetAlvo(Transform alvo)
+    {
+        // Lógica para configurar o alvo do fantasma
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

@@ -16,9 +16,8 @@ public class BombadoController : MonoBehaviour
     private bool canKick = true;
     private Transform player;
     private Collider2D bombadoCollider;
-   
-
-    public Transform kickPoint;
+    public Transform kickPoint;  // Ponto de origem do chute
+    public LayerMask playerLayer;  // Camada do jogador
 
     private void Start()
     {
@@ -30,7 +29,6 @@ public class BombadoController : MonoBehaviour
         bombadoCollider = GetComponent<Collider2D>();
         bombadoCollider.isTrigger = false; // ou true, dependendo da sua necessidade
         rb.isKinematic = false; // ou true, dependendo da sua necessidade
-
     }
 
     private void Update()
@@ -76,25 +74,38 @@ public class BombadoController : MonoBehaviour
 
     private bool CanKick()
     {
-        return canKick;
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        return canKick && distanceToPlayer < detectionRange && distanceToPlayer < kickRange;
     }
 
     private void Kick()
     {
+        Debug.Log("Kick method called");
+
         animator.SetTrigger("Kick");
 
-        // Encontrar o componente PlayerHealth no cenário
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        // Use Physics2D.OverlapCircle para detectar colisões com o jogador
+        Collider2D hitPlayer = Physics2D.OverlapCircle(kickPoint.position, kickRange, playerLayer);
 
-        if (playerHealth != null)
+        if (hitPlayer != null)
         {
-            playerHealth.TakeDamageKick(2);
+            PlayerHealth playerHealth = hitPlayer.GetComponent<PlayerHealth>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamageKick(2);
+            }
+            else
+            {
+                Debug.LogWarning("O objeto atingido não possui o script PlayerHealth.");
+            }
         }
         else
         {
-            Debug.LogWarning("O jogador não possui o script PlayerHealth.");
+            Debug.LogWarning("Nenhum jogador detectado dentro do alcance do chute.");
         }
     }
+
 
     private IEnumerator KickCooldown()
     {
@@ -136,5 +147,13 @@ public class BombadoController : MonoBehaviour
     private void PararTodasAcoes()
     {
         // Implemente a lógica para parar todas as ações do jogador aqui
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enemy collided with Player");
+        }
     }
 }

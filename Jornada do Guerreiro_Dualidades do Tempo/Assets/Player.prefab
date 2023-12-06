@@ -9934,7 +9934,7 @@ GameObject:
   - component: {fileID: 5850577475783498134}
   - component: {fileID: 5224456238074440850}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10222,7 +10222,7 @@ MonoBehaviour:
   checkRadius: 0.3
   platformLayerMask:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 64
   groundCheck: {fileID: 1765235670888148834}
   groundLayer:
     serializedVersion: 2
