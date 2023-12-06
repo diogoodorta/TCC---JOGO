@@ -32,7 +32,7 @@ public class fase4 extends AppCompatActivity {
     }
 
     public void IrParaTelaCenario (View view){
-        Intent novatela = new Intent ( fase4.this, inimigos4.class);
+        Intent novatela = new Intent ( fase4.this, cena3.class);
         startActivity(novatela);
 
         vibrar();

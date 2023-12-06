@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_height="250dp"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/kaue" />
 
             <Button
                 android:id="@+id/button5"
@@ -112,14 +112,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/joaoA" />
+                android:src="@drawable/joaoo" />
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/dourado"
-                android:onClick="irParaSitePerfilProjeto"
+                android:onClick="irParaSitePerfilJoãoA"
                 android:text="@string/Perfil"
                 android:textColor="@color/azul_escuro"
                 android:textSize="20sp" />
@@ -133,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dourado"
-        android:onClick="irParaSitePerfilProjeto"
+        android:onClick="irParaSiteProjeto"
         android:text="@string/Projeto"
         android:textColor="@color/azul_escuro"
         android:textSize="20sp"

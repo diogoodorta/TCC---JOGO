@@ -62,7 +62,6 @@
                 android:paddingStart="10dp"
                 android:textAlignment="center"
                 android:text="@string/Abelha"
-                android:layout_margin=""
                 android:textColor="@color/marrom_escuro"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
