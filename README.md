@@ -64,3 +64,5 @@ Utilizaremos elementos básicos como:
   * Layouts;
   * TextView;
 ---
+
+LINK DA APRESENTAÇÃO: https://www.youtube.com/watch?v=5lggKoXGbyk
