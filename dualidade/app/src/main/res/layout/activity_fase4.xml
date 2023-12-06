@@ -8,19 +8,6 @@
     tools:context=".fase4">
 
     <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="145dp"
-        android:layout_height="57dp"
-        android:contentDescription="@string/Boss"
-        android:onClick="IrParaTelaChefoes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583"
-        app:srcCompat="@drawable/btnboss3" />
-
-    <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="145dp"
         android:layout_height="57dp"
@@ -30,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449"
+        app:layout_constraintVertical_bias="0.611"
         app:srcCompat="@drawable/btncenario3" />
 
     <ImageButton
@@ -43,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321"
+        app:layout_constraintVertical_bias="0.413"
         app:srcCompat="@drawable/btninimi3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

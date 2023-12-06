@@ -26,19 +26,32 @@
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/abelha" />
+                android:layout_height="119dp"
+                android:src="@drawable/mapa9" />
+
+            <ImageView
+                android:id="@+id/imageView31"
+                android:layout_width="match_parent"
+                android:layout_height="166dp"
+                android:src="@drawable/mapa10" />
+
+            <ImageView
+                android:id="@+id/imageView32"
+                android:layout_width="match_parent"
+                android:layout_height="157dp"
+                android:src="@drawable/mapa11" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="20dp"
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="5dp"
                 android:paddingStart="10dp"
-                android:text="@string/texttest"
-                android:textColor="@color/laranja_escuro"
+                android:text="@string/mapa3"
+                android:textAlignment="center"
+                android:textColor="#B6605A"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

@@ -17,21 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442"
+        app:layout_constraintVertical_bias="0.583"
         app:srcCompat="@drawable/btncenario2" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="145dp"
-        android:layout_height="57dp"
-        android:contentDescription="@string/Boss"
-        android:onClick="IrParaTelaChefoes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551"
-        app:srcCompat="@drawable/btnboss2" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -43,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33"
+        app:layout_constraintVertical_bias="0.413"
         app:srcCompat="@drawable/btninimi2" />
 
 

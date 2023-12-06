@@ -30,7 +30,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="219dp"
-                android:src="@drawable/larva" />
+                android:src="@drawable/tatu" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -40,7 +40,8 @@
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="5dp"
                 android:paddingStart="10dp"
-                android:text="@string/texttest"
+                android:textAlignment="center"
+                android:text="@string/Tatu"
                 android:textColor="@color/marrom_escuro"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
@@ -49,7 +50,6 @@
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="166dp"
-                android:layout_marginTop="35dp"
                 android:src="@drawable/abelha" />
 
             <TextView
@@ -60,7 +60,9 @@
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="5dp"
                 android:paddingStart="10dp"
-                android:text="@string/texttest"
+                android:textAlignment="center"
+                android:text="@string/Abelha"
+                android:layout_margin=""
                 android:textColor="@color/marrom_escuro"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
@@ -70,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="158dp"
                 android:layout_marginTop="35dp"
-                android:src="@drawable/inseto" />
+                android:src="@drawable/larva" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -80,7 +82,8 @@
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="5dp"
                 android:paddingStart="10dp"
-                android:text="@string/texttest"
+                android:text="@string/larva"
+                android:textAlignment="center"
                 android:textColor="@color/marrom_escuro"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />

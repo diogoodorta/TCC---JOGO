@@ -25,9 +25,9 @@
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/caio" />
 
             <Button
                 android:id="@+id/button"
@@ -42,9 +42,9 @@
             <ImageView
                 android:id="@+id/imageView18"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/diogo" />
 
             <Button
                 android:id="@+id/button2"
@@ -59,15 +59,14 @@
             <ImageView
                 android:id="@+id/imageView19"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:onClick="irParaSitePerfilJoãoA"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/gusta"/>
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:backgroundTint="@color/dourado"
                 android:onClick="irParaSitePerfilGustavo"
                 android:text="@string/Perfil"
@@ -78,7 +77,7 @@
                 android:id="@+id/imageView20"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:src="@drawable/abelha" />
 
             <Button
@@ -94,9 +93,9 @@
             <ImageView
                 android:id="@+id/imageView21"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/joao" />
 
             <Button
                 android:id="@+id/button6"
@@ -111,9 +110,9 @@
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/abelha" />
+                android:src="@drawable/joaoA" />
 
             <Button
                 android:id="@+id/button7"
@@ -143,8 +142,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" /><![CDATA[
+        app:layout_constraintVertical_bias="0.95" />
 
-    />
-]]>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,21 +25,47 @@
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/abelha" />
+                android:layout_height="164dp"
+                android:src="@drawable/mapa4" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="match_parent"
+                android:layout_height="134dp"
+                android:src="@drawable/mapa5" />
+
+            <ImageView
+                android:id="@+id/imageView28"
+                android:layout_width="match_parent"
+                android:layout_height="198dp"
+                android:src="@drawable/mapa6" />
+
+            <ImageView
+                android:id="@+id/imageView29"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/mapa7" />
+
+            <ImageView
+                android:id="@+id/imageView30"
+                android:layout_width="match_parent"
+                android:layout_height="179dp"
+                android:src="@drawable/mapa8" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="20dp"
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="5dp"
                 android:paddingStart="10dp"
-                android:text="@string/texttest"
-                android:textColor="@color/ciano"
+                android:text="@string/mapa2"
+                android:textAlignment="center"
+                android:textColor="#98CAD2"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
+
         </LinearLayout>
     </ScrollView>
 

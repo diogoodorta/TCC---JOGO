@@ -23,5 +23,23 @@
     <string name="Projeto">Projeto</string>
     <string name="text_button"> </string>
     <string name="dualidades_do_destino">Dualidades do destino</string>
+    <string name="Tatu">Tatu(Boss)</string>
+    <string name="Clerio">Clérigo</string>
+    <string name="esqueleto">Esqueleto</string>
+    <string name="prisioneiro">Prisioneiro</string>
+    <string name="Fantasma">Fantasma</string>
+    <string name="zumbi">Zumbi</string>
+    <string name="Vagante">Vangante</string>
+    <string name="morte">Morte</string>
+    <string name="Escudeiro">Escudeiro</string>
+    <string name="sd">Soldado possuido</string>
+    <string name="Abelha">Abelha</string>
+    <string name="mapa1">Mapa 1</string>
+    <string name="mapa2">Mapa 2</string>
+    <string name="mapa3">Mapa 3</string>
+
+
+
+
 
 </resources>
